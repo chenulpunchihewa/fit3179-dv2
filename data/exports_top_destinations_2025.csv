@@ -1,0 +1,16 @@
+rank,destination,iso3,exports_aud_bn,share_of_total_pct,lon,lat,coord_source,origin_lon,origin_lat
+1,China,CHN,176.312,33.7,106.34,32.5,Natural Earth 110m label point,134.05,-24.13
+2,Japan,JPN,61.961,11.8,138.44,36.14,Natural Earth 110m label point,134.05,-24.13
+3,South Korea,KOR,41.837,8.0,128.13,36.38,Natural Earth 110m label point,134.05,-24.13
+4,United States,USA,40.583,7.8,-97.48,39.54,Natural Earth 110m label point,134.05,-24.13
+5,United Kingdom,GBR,21.615,4.1,-2.12,54.4,Natural Earth 110m label point,134.05,-24.13
+6,India,IND,20.848,4.0,79.36,22.69,Natural Earth 110m label point,134.05,-24.13
+7,Taiwan,TWN,15.462,3.0,120.87,23.65,Natural Earth 110m label point,134.05,-24.13
+8,Singapore,SGP,14.401,2.8,103.82,1.35,entered manually (not in Natural Earth 110m),134.05,-24.13
+9,Hong Kong,HKG,13.601,2.6,114.17,22.32,entered manually (not in Natural Earth 110m),134.05,-24.13
+10,New Zealand,NZL,13.248,2.5,172.79,-39.76,Natural Earth 110m label point,134.05,-24.13
+11,Indonesia,IDN,12.591,2.4,101.89,-0.95,Natural Earth 110m label point,134.05,-24.13
+12,Malaysia,MYS,11.256,2.1,113.84,2.53,Natural Earth 110m label point,134.05,-24.13
+13,Vietnam,VNM,10.071,1.9,105.39,21.72,Natural Earth 110m label point,134.05,-24.13
+14,Thailand,THA,7.172,1.4,101.07,15.46,Natural Earth 110m label point,134.05,-24.13
+15,United Arab Emirates,ARE,6.155,1.2,54.55,23.47,Natural Earth 110m label point,134.05,-24.13

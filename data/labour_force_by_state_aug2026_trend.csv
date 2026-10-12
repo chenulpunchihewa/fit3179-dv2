@@ -1,0 +1,10 @@
+state,state_code,level,employed_people,employment_ratio_pct,unemployment_rate_pct,underemployment_rate_pct,participation_rate_pct
+New South Wales,NSW,state/territory,4562500,63.4,4.3,5.5,66.3
+Victoria,VIC,state/territory,3827900,64.2,5.1,6.9,67.7
+Queensland,QLD,state/territory,3051000,64.2,4.4,6.5,67.1
+South Australia,SA,state/territory,989100,61.4,4.4,6.6,64.2
+Western Australia,WA,state/territory,1685600,65.5,4.4,5.8,68.5
+Tasmania,TAS,state/territory,282000,57.5,5.2,7.1,60.6
+Northern Territory,NT,state/territory,147600,69.3,4.8,4.9,72.8
+Australian Capital Territory,ACT,state/territory,277000,68.8,4.0,6.3,71.6
+Australia,AUS,national,14829400,63.9,4.6,6.3,67.0

@@ -1,0 +1,9 @@
+city,state_code,lat,lon,cpi_annual_change_pct_aug2026,national_cpi_annual_change_pct_aug2026,coord_source
+Sydney,NSW,-33.87,151.21,3.9,4.0,entered manually (approx. city centre)
+Melbourne,VIC,-37.81,144.96,3.5,4.0,entered manually (approx. city centre)
+Brisbane,QLD,-27.47,153.03,4.1,4.0,entered manually (approx. city centre)
+Adelaide,SA,-34.93,138.6,4.7,4.0,entered manually (approx. city centre)
+Perth,WA,-31.95,115.86,4.3,4.0,entered manually (approx. city centre)
+Hobart,TAS,-42.88,147.33,4.8,4.0,entered manually (approx. city centre)
+Darwin,NT,-12.46,130.85,4.5,4.0,entered manually (approx. city centre)
+Canberra,ACT,-35.28,149.13,4.1,4.0,entered manually (approx. city centre)

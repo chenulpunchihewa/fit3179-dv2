@@ -1,0 +1,25 @@
+/* layout.css: where things sit on the page (Week 5, Note 2: one CSS file for layout, one for fonts and colours) */
+
+html, body {
+    margin: 0;
+    background-color: #ffffff;
+}
+
+/* A centred column that is never wider than the screen, so there is no sideways scrolling on a small laptop */
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Space between the grid columns. box-sizing keeps the padding inside each column's width. */
+.pure-g > div {
+    box-sizing: border-box;
+    padding: 0 12px;
+}
+
+footer {
+    margin-top: 48px;
+    padding-top: 16px;
+    border-top: 1px solid #cccccc;
+}
