@@ -1,0 +1,12 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Line chart of Australian household spending each month from July 2012 to August 2026, seasonally adjusted and in current prices (ABS Monthly Household Spending Indicator)",
+  "width": 520,
+  "height": 340,
+  "data": {"url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/household_spending_monthly.csv"},
+  "mark": "line",
+  "encoding": {
+    "x": {"field": "date", "type": "temporal", "title": "null"},
+    "y": {"field": "spending_seasonally_adjusted_aud_m", "type": "quantitative", "title": "Monthly household spending (A$ million)"}
+  }
+}

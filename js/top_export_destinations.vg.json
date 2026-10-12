@@ -1,10 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Step 1: a plain bar chart of goods exports by destination, 2025",
+  "description": "A plain bar chart of goods exports by destination, 2025",
   "width": 520,
   "height": 340,
   "data": {
-    "url": "data/exports_top_destinations_2025.csv"
+    "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/exports_top_destinations_2025.csv"
   },
   "mark": "bar",
   "encoding": {
