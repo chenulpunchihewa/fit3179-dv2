@@ -24,3 +24,15 @@ var vg_unemployment_underemployment = "js/unemployment_underemployment.vg.json";
 vegaEmbed("#vis_unemployment_underemployment", vg_unemployment_underemployment, {actions: false}).then(function(result) {
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
+
+var vg_employment_heatmap = "js/employment_heatmap.vg.json";
+// "#vis_heatmap" is the id of the div in index.html. {actions: false} hides the three-dot menu with "Open in Vega Editor" (Week 9 studio).
+vegaEmbed("#vis_heatmap", vg_employment_heatmap, {actions: false}).then(function(result) {
+    // result.view is the Vega view instance (not needed yet)
+}).catch(console.error);
+
+var vg_exports_streamgraph = "js/exports_streamgraph.vg.json";
+// "#vis_streamgraph" is the id of the div in index.html. {actions: false} hides the three-dot menu with "Open in Vega Editor" (Week 9 studio).
+vegaEmbed("#vis_streamgraph", vg_exports_streamgraph, {actions: false}).then(function(result) {
+    // result.view is the Vega view instance (not needed yet)
+}).catch(console.error);

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Streamgraph of Australia's goods exports by destination, 2006 to 2025 (A$ billion, current prices). The thickness of each band is the value of exports to that destination.",
+  "width": 380,
+  "height": 320,
+  "data": {
+    "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/exports_by_destination_year.csv"
+  },
+  "mark": "area",
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "title": null,
+      "axis": {"format": "d", "tickMinStep": 1, "values": [2006, 2010, 2015, 2020, 2025]},
+      "scale": {"nice": false}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "exports_aud_bn",
+      "type": "quantitative",
+      "stack": "center",
+      "axis": null
+    },
+    "color": {
+      "field": "destination",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": ["China", "Japan", "South Korea", "United States", "United Kingdom", "India", "Taiwan", "Singapore", "Hong Kong", "New Zealand", "All other countries"],
+        "range": ["#e31a1c", "#1f78b4", "#33a02c", "#ff7f00", "#6a3d9a", "#b15928", "#a6cee3", "#b2df8a", "#fb9a99", "#cab2d6", "#bdbdbd"]
+      }
+    },
+    "tooltip": [
+      {"field": "destination", "type": "nominal", "title": "Destination"}
+    ]
+  }
+}
