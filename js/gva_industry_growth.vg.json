@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Placeholder",
+  "width": 400,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/gva_industry_growth_jun2026.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "quarterly_growth_pct",
+      "type": "quantitative",
+      "title": "% change on the previous quarter"
+    },
+    "y": {
+      "field": "industry",
+      "type": "nominal",
+      "title": "Industry"
+    }
+  }
+}

@@ -12,3 +12,9 @@ var vg_seasonal_spending = "js/household_spending.vg.json";
 vegaEmbed("#vis_spending", vg_seasonal_spending, {actions: false}).then(function(result) {
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
+
+var vg_gva_growth_industry = "js/gva_industry_growth.vg.json";
+// "#vis_gvagrowthindustry" is the id of the div in index.html. {actions: false} hides the three-dot menu with "Open in Vega Editor" (Week 9 studio).
+vegaEmbed("#vis_gvagrowthindustry", vg_gva_growth_industry, {actions: false}).then(function(result) {
+    // result.view is the Vega view instance (not needed yet)
+}).catch(console.error);
