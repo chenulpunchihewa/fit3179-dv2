@@ -16,7 +16,13 @@
     "y": {
       "field": "industry",
       "type": "nominal",
-      "title": "Industry"
+      "title": "Industry",
+      "sort": {"field": "quarterly_growth_pct", "order": "descending"},
+      "axis": {"labelLimit": 300}
+    },
+    "color": {
+        "condition": {"test": "datum.quarterly_growth_pct < 0", "value": "#b2182b"},
+        "value": "#2166ac"
     }
   }
 }
