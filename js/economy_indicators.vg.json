@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Four economic indicators, 2018 to 2026",
+  "data": {"url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/chart2_economy_indicators_long.csv"},
+  "facet": {
+    "field": "indicator",
+    "type": "nominal",
+    "title": null,
+    "sort": ["Economic growth over the past year", "Unemployment rate", "Price rises (inflation) over the past year", "Share of income households save"]
+  },
+  "columns": 2,
+  "spec": {
+    "width": 280,
+    "height": 160,
+    "mark": "line",
+    "encoding": {
+      "x": {"field": "date", "type": "temporal", "title": null},
+      "y": {"field": "value_pct", "type": "quantitative", "title": "%"}
+    }
+  },
+  "resolve": {"scale": {"y": "independent"}},
+  "config": {
+  "axis": {"labelFontSize": 12, "titleFontSize": 12},
+  "header": {"labelFontSize": 14, "labelPadding": 8}
+  }
+}
