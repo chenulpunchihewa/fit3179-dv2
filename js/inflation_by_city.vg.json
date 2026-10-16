@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 520,
+  "height": 420,
+  "projection": {"type": "equalEarth", "rotate": [-134, 0]},
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/australia_states.topojson",
+        "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+      },
+      "transform": [
+        {"filter": "datum.properties.name != 'Macquarie Island' && datum.properties.name != 'Lord Howe Island'"}
+      ],
+      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+    },
+    {
+        "data": {
+            "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/cpi_capital_cities_aug2026.csv"
+        },
+        "transform": [
+            {
+                "calculate": "datum.cpi_annual_change_pct_aug2026 > datum.national_cpi_annual_change_pct_aug2026 ? 'Above national rate' : 'Below national rate'",
+                "as" : "vs_national"
+            }
+        ],
+        "mark": {"type": "circle", "opacity": 0.8, "tooltip":{"content": "data"}},
+        "encoding": {
+            "longitude": {"field": "lon", "type": "quantitative"},
+            "latitude": {"field": "lat", "type": "quantitative"},
+            "size": {
+                "field": "cpi_annual_change_pct_aug2026",
+                "type": "quantitative",
+                "title": "Inflation (annual % change)",
+                "scale": {"domain": [0,5], "range": [0,700]}
+            },
+            "color": {
+                "field": "vs_national",
+                "type": "nominal",
+                "title": "Compared with national rate",
+                "scale": {
+                    "domain": ["Above national rate", "Below national rate"],
+                    "range": ["#b2182b", "#2166ac"]
+                }
+            }
+        } 
+    }
+  ]
+}
