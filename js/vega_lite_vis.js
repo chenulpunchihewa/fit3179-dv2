@@ -66,3 +66,15 @@ var vg_exports_flow_map = "js/exports_flow_map.vg.json";
 vegaEmbed("#vis_flow_map", vg_exports_flow_map, {actions: false}).then(function(result) {
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
+
+var vg_icon_array = "js/employment_icon_array.vg.json";
+// "#vis_icon_array" is the id of the new div in index.html.
+vegaEmbed("#vis_icon_array", vg_icon_array, {actions: false}).then(function(result) {}).catch(console.error);
+
+var vg_spending_index = "js/spending_category_index.vg.json";
+// "#vis_spending_index" is the id of the new div in index.html.
+vegaEmbed("#vis_spending_index", vg_spending_index, {actions: false}).then(function(result) {}).catch(console.error);
+
+var vg_cartogram = "js/employment_cartogram.vg.json";
+// "#vis_cartogram" is the id of the new div in index.html.
+vegaEmbed("#vis_cartogram", vg_cartogram, {actions: false}).then(function(result) {}).catch(console.error);

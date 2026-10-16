@@ -1,0 +1,82 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Dorling cartogram of employed people by state and territory (circle area) and employment ratio (colour), August 2026",
+  "width": 380,
+  "height": 300,
+  "data": {
+    "values": [
+      {"state": "New South Wales", "x": 269, "y": 143},
+      {"state": "Victoria", "x": 167, "y": 71},
+      {"state": "Queensland", "x": 194, "y": 235},
+      {"state": "South Australia", "x": 154, "y": 161},
+      {"state": "Western Australia", "x": 86, "y": 180},
+      {"state": "Tasmania", "x": 234, "y": 32},
+      {"state": "Northern Territory", "x": 130, "y": 220},
+      {"state": "Australian Capital Territory", "x": 244, "y": 66}
+    ]
+  },
+  "transform": [
+    {
+      "lookup": "state",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/labour_force_by_state_aug2026_trend.csv"
+        },
+        "key": "state",
+        "fields": ["state_code", "employed_people", "employment_ratio_pct"]
+      }
+    },
+    {"calculate": "datum.employed_people / 1000000", "as": "employed_m"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "circle", "stroke": "white", "strokeWidth": 1.5, "opacity": 0.95},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative", "axis": null, "scale": {"domain": [0, 380]}},
+        "y": {"field": "y", "type": "quantitative", "axis": null, "scale": {"domain": [0, 300]}},
+        "size": {
+          "field": "employed_m",
+          "type": "quantitative",
+          "title": "Employed people (millions)",
+          "scale": {"domain": [0, 5], "range": [0, 14000]},
+          "legend": {
+            "values": [0.5, 1, 2, 4],
+            "format": ".1~f",
+            "orient": "right",
+            "symbolFillColor": "white",
+            "symbolStrokeColor": "#777777",
+            "symbolStrokeWidth": 1.5
+          }
+        },
+        "color": {
+          "field": "employment_ratio_pct",
+          "type": "quantitative",
+          "title": "Employment ratio (%)",
+          "scale": {
+            "domain": [55, 70],
+            "range": ["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]
+          },
+          "legend": {"orient": "top", "direction": "horizontal", "gradientLength": 160, "values": [55, 60, 65, 70]}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "employed_people", "type": "quantitative", "title": "Employed people", "format": ","},
+          {"field": "employment_ratio_pct", "type": "quantitative", "title": "Employment ratio (%)", "format": ".1f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": "bold"},
+      "encoding": {
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "state_code", "type": "nominal"},
+        "color": {
+          "condition": {"test": "datum.employment_ratio_pct >= 66", "value": "white"},
+          "value": "#333333"
+        }
+      }
+    }
+  ],
+  "config": {"view": {"stroke": null}}
+}
