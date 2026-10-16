@@ -60,3 +60,9 @@ var vg_inflation_symbol_map = "js/inflation_symbol_map.vg.json";
 vegaEmbed("#vis_inflation_map", vg_inflation_symbol_map, {actions: false}).then(function(result) {
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
+
+var vg_exports_flow_map = "js/exports_flow_map.vg.json";
+// "#vis_flow_map" is the id of the new div in index.html.
+vegaEmbed("#vis_flow_map", vg_exports_flow_map, {actions: false}).then(function(result) {
+    // result.view is the Vega view instance (not needed yet)
+}).catch(console.error);
