@@ -5,7 +5,7 @@
   "height": 400,
   "projection": {"type": "equalEarth", "rotate": [-134, 0]},
   "data": {
-    "url": "",
+    "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/australia_states.topojson",
     "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
   },
   "transform": [

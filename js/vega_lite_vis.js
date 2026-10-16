@@ -48,3 +48,9 @@ var vg_spending_slope = "js/spending_slope.vg.json";
 vegaEmbed("#vis_spending_slope_graph", vg_spending_slope, {actions: false}).then(function(result) {
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
+
+var vg_unemployment_choropleth = "js/unemployment_chloropleth.vg.json";
+// "#vis_unemployment_map" is the id of the new div in index.html.
+vegaEmbed("#vis_unemployment_map", vg_unemployment_choropleth, {actions: false}).then(function(result) {
+    // result.view is the Vega view instance (not needed yet)
+}).catch(console.error);
