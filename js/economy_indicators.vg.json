@@ -10,9 +10,9 @@
   },
   "columns": 2,
   "spec": {
-    "width": 280,
+    "width": 255,
     "height": 160,
-    "mark": "line",
+    "mark": {"type": "line", "color": "#2166ac"},
     "encoding": {
       "x": {"field": "date", "type": "temporal", "title": null},
       "y": {"field": "value_pct", "type": "quantitative", "title": "%"}

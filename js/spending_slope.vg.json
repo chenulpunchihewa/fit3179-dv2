@@ -1,23 +1,23 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Monthly household spending by category, August 2019 and August 2026",
+  "description": "Slope graph of monthly household spending (A$ billion) for nine categories, August 2019 and August 2026, with the change in dollars beside each label",
   "width": 260,
   "height": 380,
   "data": {"url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/spending_by_category_2019_2026.csv"},
   "encoding": {
     "x": {
-    "field": "month",
-    "type": "ordinal",
-    "sort": ["Aug 2019", "Aug 2026"],
-    "title": null,
-    "axis": {"labelAngle": 0, "labelFontSize": 14, "ticks": false, "domain": false}
+      "field": "month",
+      "type": "ordinal",
+      "sort": ["Aug 2019", "Aug 2026"],
+      "title": null,
+      "axis": {"labelAngle": 0, "labelFontSize": 14, "ticks": false, "domain": false}
     },
     "y": {"field": "spending_aud_bn", "type": "quantitative", "title": "A$ billion a month"},
     "detail": {"field": "category", "type": "nominal"},
     "color": {
       "condition": [
         {"test": "datum.category == 'Alcoholic beverages and tobacco'", "value": "#b2182b"},
-        {"test": "datum.category == 'Hotels, cafes and restaurants'", "value": "#2166ac"}
+        {"test": "datum.category == 'Transport' || datum.category == 'Recreation and culture'", "value": "#2166ac"}
       ],
       "value": "#bdbdbd"
     }
@@ -26,22 +26,28 @@
     {"mark": {"type": "line", "strokeWidth": 2.5}},
     {"mark": {"type": "circle", "size": 70, "opacity": 1}},
     {
-    "transform": [{"filter": "datum.month == 'Aug 2026'"}],
-    "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 13},
-    "encoding": {
-        "text": {"field": "category", "type": "nominal"},
+      "transform": [
+        {"calculate": "datum.month == 'Aug 2026' ? datum.spending_aud_bn : null", "as": "v2026"},
+        {"calculate": "datum.month == 'Aug 2019' ? datum.spending_aud_bn : null", "as": "v2019"},
+        {"joinaggregate": [{"op": "max", "field": "v2026", "as": "end"}, {"op": "max", "field": "v2019", "as": "start"}], "groupby": ["category"]},
+        {"filter": "datum.month == 'Aug 2026'"},
+        {"calculate": "datum.category + '  ' + format(datum.end - datum.start, '+.1f')", "as": "label"}
+      ],
+      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 13},
+      "encoding": {
+        "text": {"field": "label", "type": "nominal"},
         "color": {
-        "condition": [
+          "condition": [
             {"test": "datum.category == 'Alcoholic beverages and tobacco'", "value": "#b2182b"},
-            {"test": "datum.category == 'Hotels, cafes and restaurants'", "value": "#2166ac"}
-        ],
-        "value": "#555555"
+            {"test": "datum.category == 'Transport' || datum.category == 'Recreation and culture'", "value": "#2166ac"}
+          ],
+          "value": "#555555"
         }
-    }
+      }
     }
   ],
   "config": {
-  "view": {"stroke": null},
-  "axis": {"labelFontSize": 12, "titleFontSize": 12}
-}
+    "view": {"stroke": null},
+    "axis": {"labelFontSize": 12, "titleFontSize": 12}
+  }
 }

@@ -1,15 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Monthly household spending by category since August 2019, seasonally adjusted, indexed to August 2019 = 100, with consumer prices for comparison",
+  "description": "Monthly household spending, seasonally adjusted and indexed to August 2019 = 100: each of nine categories, all spending together, and consumer prices (CPI) for comparison",
   "width": 380,
-  "height": 340,
+  "height": 440,
   "layer": [
     {
       "data": {
         "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/household_spending_by_category_monthly.csv"
       },
       "transform": [
-        {"calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null", "as": "base_value"},
+        {
+          "calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null",
+          "as": "base_value"
+        },
         {"joinaggregate": [{"op": "max", "field": "base_value", "as": "base"}], "groupby": ["category"]},
         {"filter": "timeFormat(datum.date, '%Y-%m') >= '2019-08'"},
         {"calculate": "datum.spending_seasonally_adjusted_aud_m / datum.base * 100", "as": "index"}
@@ -17,7 +20,12 @@
       "mark": {"type": "line", "strokeWidth": 2},
       "encoding": {
         "x": {"field": "date", "type": "temporal", "title": null, "axis": {"format": "%Y", "tickCount": 7, "grid": false}},
-        "y": {"field": "index", "type": "quantitative", "title": "Monthly spending (Aug 2019 = 100)", "scale": {"domain": [40, 180]}},
+        "y": {
+          "field": "index",
+          "type": "quantitative",
+          "title": "Monthly spending (Aug 2019 = 100)",
+          "scale": {"domain": [40, 180]}
+        },
         "detail": {"field": "category", "type": "nominal"},
         "color": {
           "condition": [
@@ -35,13 +43,41 @@
     },
     {
       "data": {
+        "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/household_spending_monthly.csv"
+      },
+      "transform": [
+        {
+          "calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null",
+          "as": "base_value"
+        },
+        {"joinaggregate": [{"op": "max", "field": "base_value", "as": "base"}]},
+        {"filter": "timeFormat(datum.date, '%Y-%m') >= '2019-08'"},
+        {"calculate": "datum.spending_seasonally_adjusted_aud_m / datum.base * 100", "as": "index"}
+      ],
+      "mark": {"type": "line", "strokeWidth": 3, "color": "#111111"},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "index", "type": "quantitative", "scale": {"domain": [40, 180]}},
+        "tooltip": [
+          {"field": "date", "type": "temporal", "title": "Month", "format": "%b %Y"},
+          {"field": "index", "type": "quantitative", "title": "All spending (Aug 2019 = 100)", "format": ".0f"}
+        ]
+      }
+    },
+    {
+      "data": {
         "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/household_spending_by_category_monthly.csv"
       },
       "transform": [
-        {"calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null", "as": "base_value"},
+        {
+          "calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null",
+          "as": "base_value"
+        },
         {"joinaggregate": [{"op": "max", "field": "base_value", "as": "base"}], "groupby": ["category"]},
         {"calculate": "datum.spending_seasonally_adjusted_aud_m / datum.base * 100", "as": "index"},
-        {"filter": "timeFormat(datum.date, '%Y-%m') == '2026-08' && (datum.category == 'Alcoholic beverages and tobacco' || datum.category == 'Hotels, cafes and restaurants')"}
+        {
+          "filter": "timeFormat(datum.date, '%Y-%m') == '2026-08' && (datum.category == 'Alcoholic beverages and tobacco' || datum.category == 'Hotels, cafes and restaurants')"
+        }
       ],
       "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 12},
       "encoding": {
@@ -62,10 +98,15 @@
         "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/household_spending_by_category_monthly.csv"
       },
       "transform": [
-        {"calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null", "as": "base_value"},
+        {
+          "calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null",
+          "as": "base_value"
+        },
         {"joinaggregate": [{"op": "max", "field": "base_value", "as": "base"}], "groupby": ["category"]},
         {"calculate": "datum.spending_seasonally_adjusted_aud_m / datum.base * 100", "as": "index"},
-        {"filter": "timeFormat(datum.date, '%Y-%m') == '2020-04' && datum.category == 'Hotels, cafes and restaurants'"},
+        {
+          "filter": "timeFormat(datum.date, '%Y-%m') == '2020-04' && datum.category == 'Hotels, cafes and restaurants'"
+        },
         {"calculate": "'April 2020 low: ' + format(datum.index, '.0f')", "as": "note"}
       ],
       "mark": {"type": "text", "align": "left", "dx": 8, "fontSize": 12, "color": "#2166ac"},
@@ -85,7 +126,7 @@
         {"filter": "timeFormat(datum.date, '%Y-%m') >= '2019-09'"},
         {"calculate": "datum.cpi_index / datum.base * 100", "as": "index"}
       ],
-      "mark": {"type": "line", "strokeWidth": 2, "strokeDash": [5, 4], "color": "#333333"},
+      "mark": {"type": "line", "strokeWidth": 2, "strokeDash": [5, 4], "color": "#555555"},
       "encoding": {
         "x": {"field": "date", "type": "temporal"},
         "y": {"field": "index", "type": "quantitative", "scale": {"domain": [40, 180]}},
@@ -105,11 +146,31 @@
         {"calculate": "datum.cpi_index / datum.base * 100", "as": "index"},
         {"filter": "timeFormat(datum.date, '%Y-%m') == '2026-06'"}
       ],
-      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 12, "color": "#333333"},
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 12, "color": "#555555"},
       "encoding": {
         "x": {"field": "date", "type": "temporal"},
         "y": {"field": "index", "type": "quantitative", "scale": {"domain": [40, 180]}},
         "text": {"value": "Consumer prices overall (CPI)"}
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/household_spending_monthly.csv"
+      },
+      "transform": [
+        {
+          "calculate": "timeFormat(datum.date, '%Y-%m') == '2019-08' ? datum.spending_seasonally_adjusted_aud_m : null",
+          "as": "base_value"
+        },
+        {"joinaggregate": [{"op": "max", "field": "base_value", "as": "base"}]},
+        {"calculate": "datum.spending_seasonally_adjusted_aud_m / datum.base * 100", "as": "index"},
+        {"filter": "timeFormat(datum.date, '%Y-%m') == '2026-08'"}
+      ],
+      "mark": {"type": "text", "align": "left", "dx": 6, "fontSize": 12, "fontWeight": "bold", "color": "#111111"},
+      "encoding": {
+        "x": {"field": "date", "type": "temporal"},
+        "y": {"field": "index", "type": "quantitative", "scale": {"domain": [40, 180]}},
+        "text": {"value": "All spending"}
       }
     }
   ],

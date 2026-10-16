@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map of the labour force underutilisation rate (unemployment rate plus underemployment rate) by state and territory, August 2026 (ABS trend estimates)",
+  "width": 500,
+  "height": 400,
+  "projection": {"type": "equalEarth", "rotate": [-134, 0]},
+  "data": {
+    "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/australia_states.topojson",
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.name",
+      "from": {
+        "data": {"url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/labour_force_by_state_aug2026_trend.csv"},
+        "key": "state",
+        "fields": ["unemployment_rate_pct", "underemployment_rate_pct"]
+      }
+    },
+    {"filter": "isValid(datum.unemployment_rate_pct)"},
+    {"calculate": "toNumber(datum.unemployment_rate_pct) + toNumber(datum.underemployment_rate_pct)", "as": "underutilisation_pct"}
+  ],
+  "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+  "encoding": {
+    "color": {
+      "field": "underutilisation_pct",
+      "type": "quantitative",
+      "title": "Underutilisation rate (%)",
+      "scale": {"scheme": "orangered", "domain": [9, 13]},
+      "legend": {"orient": "bottom-left", "values": [10, 11, 12], "format": ".0f", "gradientLength": 160}
+    },
+    "tooltip": [
+      {"field": "properties.name", "type": "nominal", "title": "State or territory"},
+      {"field": "unemployment_rate_pct", "type": "quantitative", "title": "Unemployment rate (%)", "format": ".1f"},
+      {"field": "underemployment_rate_pct", "type": "quantitative", "title": "Underemployment rate (%)", "format": ".1f"},
+      {"field": "underutilisation_pct", "type": "quantitative", "title": "Both added together (%)", "format": ".1f"}
+    ]
+  },
+  "config": {"view": {"stroke": null}}
+}

@@ -20,7 +20,7 @@
       "title": null,
       "scale": {
         "domain": ["Unemployment", "Underemployment"],
-        "range": ["#2166ac", "#d95f02"]
+        "range": ["#b2182b", "#e08214"]
       },
       "legend": {"orient": "top"}
     },

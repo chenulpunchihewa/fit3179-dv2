@@ -1,22 +1,36 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A plain bar chart of goods exports by destination, 2025",
-  "width": 520,
-  "height": 340,
+  "description": "Bar chart of Australia's goods exports to its 15 largest destinations in 2025, sorted from largest to smallest, with China highlighted. The data file is already ordered from largest to smallest, so sort is null to keep that order.",
+  "width": 400,
+  "height": 330,
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/exports_top_destinations_2025.csv"
   },
-  "mark": "bar",
   "encoding": {
-    "x": {
-      "field": "destination",
-      "type": "nominal",
-      "title": "Destination"
+    "y": {"field": "destination", "type": "nominal", "sort": null, "title": null, "axis": {"labelFontSize": 12}},
+    "x": {"field": "exports_aud_bn", "type": "quantitative", "title": "Goods exports in 2025 (A$ billion)"}
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "color": {
+          "condition": {"test": "datum.destination == 'China'", "value": "#2166ac"},
+          "value": "#bdbdbd"
+        },
+        "tooltip": [
+          {"field": "destination", "type": "nominal", "title": "Destination"},
+          {"field": "exports_aud_bn", "type": "quantitative", "title": "Exports (A$ billion)", "format": ".1f"},
+          {"field": "share_of_total_pct", "type": "quantitative", "title": "Share of all goods exports (%)", "format": ".1f"}
+        ]
+      }
     },
-    "y": {
-      "field": "exports_aud_bn",
-      "type": "quantitative",
-      "title": "Goods exports in 2025 (A$ billion)"
+    {
+      "mark": {"type": "text", "align": "left", "dx": 4, "fontSize": 12, "color": "#333333"},
+      "encoding": {
+        "text": {"field": "exports_aud_bn", "type": "quantitative", "format": ".0f"}
+      }
     }
-  }
+  ],
+  "config": {"view": {"stroke": null}, "axis": {"titleFontSize": 12}}
 }

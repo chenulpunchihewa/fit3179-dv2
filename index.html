@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Australia's economy (DRAFT)</title>
+    <title>Australia's economy: jobs, spending and trade</title>
 
     <!-- Google Fonts (Week 5, section 3.1) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,140 +28,35 @@
     <div class="page">
 
         <header>
-            <h1>Australia's economy: job, spending and trade</h1>
+            <h1>Australia's economy: jobs, spending and trade</h1>
             <p class="byline">By Chenul Punchihewa, October 2026</p>
-            <p class="intro">How are Australians doing? We look at who is in work, what households spend, which industries are growing and who buys what we sell.</p>
+            <p class="intro">How are Australians doing? We look at who has a job, how prices and spending have moved, which industries are growing and who buys what we sell. Hover over any chart for the exact figures.</p>
         </header>
 
-        <!-- One row of the Pure grid: text on the left (1/3), chart on the right (2/3) on wide screens;
+        <!-- Each row is one row of the Pure grid: text on the left (1/3), chart on the right (2/3) on wide screens;
              on narrow screens each part takes the full width and they stack. -->
+
+        <h2 class="section-title">The big picture</h2>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
-                <h2>In 2020 the economy, jobs and savings all shifted at once, then prices took off</h2>
+                <h3>In 2020 the economy, jobs and savings all shifted at once, then prices took off</h3>
                 <p>In the June 2020 quarter the economy was smaller than a year earlier, unemployment reached 7.4% and households saved 23.3% of their income. Prices were barely moving: annual inflation was -0.3%.</p>
                 <p>Inflation then climbed to 7.9% by the end of 2022, while saving fell to 1.8% by September 2023. By June 2026, unemployment was 4.4%, inflation was 3.9%, saving was 6.5% and the economy had grown 2.1% over the year.</p>
                 <p>Each panel has its own vertical scale, so compare the shape of each line over time, not the height of one panel against another. Saving is the share of household income that is not spent. Unemployment is read at the end of each quarter.</p>
-                <p> Source: ABS, Australian National Accounts (June 2026), Labour Force, Australia (August 2026) and Consumer Price Index, Australia (August 2026). Infaltion is calculated from ABS CPI Index numbers and may differ from the published figure by about 0.1 percentage points.</p>
+                <p class="source">Source: ABS, Australian National Accounts (June 2026), Labour Force, Australia (August 2026) and Consumer Price Index, Australia (August 2026). Inflation is calculated from ABS CPI index numbers and may differ from the published figure by about 0.1 percentage points.</p>
             </div>
             <div class="pure-u-1 pure-u-md-2-3">
                 <div id="vis_economy_indicators"></div>
             </div>
         </div>
+
+        <h2 class="section-title">Work</h2>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
-                <h2>The share of Australians in work fell sharply in 2020, then climbed higher than before</h2>
-                <p>The employment ration is the share of the population aged 15 and over who are in work. In February 2020, it was 62.6%. By May 2020 it had fallen to 57.9%. It was back at its pre-COVID level by May 2021, then reached 64.4% at several points between 2023 and 2025. In August 2026 it was 63.9%.</p>
-                <p>Darker blue means a higher share in work. Figures are seasonally adjusted, and blank squares are months outside the data. Hover over a sqaure for the exact figure.</p>
-                <p>Source: ABS, Labour Force, Australia, August 2026 (seasonally adjusted).</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_heatmap"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>Underemployment is higher than unemployment in every state and territory</h2>
-                <p>In August 2026, 4.6% of Australian workers were unemployed and 6.3% were underemployed, meaning they had a job but wanted more hours. Tasmania was highest on both measures, at 5.2% and 7.1%.</p>
-                <p>The ACT had the lowest unemployment (4.0%) but the widest gap between the two measures. The Northern Territory was the only place where they were almost equal (4.8% and 4.9%).</p>
-                <p>Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_unemployment_underemployment"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>We spend almost twice as many dollars each month as in 2012</h2>
-                <p>Australian households spent about $82 billion in August 2026, up from about $44 billion in mid-2012. Spending fell by more than a fifth between February and April 2020 as COVID restrictions began, and had mostly recovered by June.</p>
-                <p>Figures are seasonally adjusted, which removes regular calendar effects such as Christmas shopping. They are in current prices and are not adjusted for inflation, so part of the rise reflects higher prices rather than people buying more.</p>
-                <p>Source: ABS, Monthly Household Spending Indicator, August 2026.</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_spending"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>Most industries grew in the June quarter, but manufacturing fell the most</h2>
-                <p>Of the 19 industries shown, 14 grew and 5 shrank. Professional, scientific and technical services grew the most (+2.3%). Manufacturing fell the most (-1.9%), followed by administrative and support services (-1.4%)</p>
-                <p>Gross value added (GVA) is the value an industry adds to the economy. Bars show the percentage change on the March quarter, adjusted for price changes and seasonal patterns. This is one quarter only, so it shows a snapshot rather than a trend.</p>
-                <p>Source: ABS, Australian National Accounts: National Income, Expenditure and Product, June 2026</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_gvagrowthindustry"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>One in every three dollars of goods we sell abroad goes to China</h2>
-                <p>In 2025, Australia sold A$176 billion of goods to China. That is 33.7% of all goods exports and almost three times as much as to Japan (A$62 billion). The top four destinations together took about 61% of the total.</p>
-                <p>These figures cover goods only, not services such as tourism and education. Values are in current prices.</p>
-                <p>Source: DFAT, Merchandise trade statistical pivot tables (calendar year 2025)</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_top_exports"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>From one in eight to one in three: China's growing share of our exports</h2>
-                <p>China bought about 12% of our goods exports in 2006. That rose to about 41% in 2020 and easted to about 34% in 2025. Over the same period, total goods exports grew from A$164 billion to A$524 billion.</p>
-                <p>Each coloured band is a destination, and its thickness shows the value of exports. Read the chart for the overall pattern rather than exact figures. Values are in current prices. DFAT notes that some country totals are understated for confidentiality reasons.</p>
-                <p>Source: DFAT, Merchandise trade statistical pivot tables (calendar years 2006-2025).</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_streamgraph"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>Eating out has grown fastest since 2019, and alcohol and tobacco is the only category that shrank</h2>
-                <p>Between August 2019 and August 2026, motnhly household spending across these nine categories rose from A$55 billion to A$82 billion, up 49%. Hotels, cafes and restaurants grew the most, by more than two-thirds, from A$6.8 billion to A$11.4 billion. Recreation and culture rose 62% and transport 56%.</p>
-                <p>Alcohol and tobacco was the only category to fall, from A$3.6 billion to A$2.9 billion, down about 20%.</p>
-                <p>Figures are seasonally adjusted and in current prices, so part of every rise is higher prices rather than people buying more. They cover nine ABS spending categories, not all household spending.</p>
-                <p>Source: ABS, Monthly Household Spending Indicator, August 2026 (seasonally adjusted).</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_spending_slope_graph"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>Title Placeholder</h2>
-                <p>Placeholder</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_unemployment_map"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>Prices rose fastest in Hobart and Adelaide, and slowest in Melbourne</h2>
-                <p>In the year to August 2026, prices rose 4.8% in Hobart and 4.7% in Adelaide. Melbourne had the smallest rise, at 3.5%, followed by Sydney at 3.9%. Those two were the only capital cities below the national rate of 4.0%.</p>
-                <p>The size of each circle shows the rate of price rises. The colour shows whether the city is above or below the national rate. The cities only range from 3.5% to 4.8%, so the circles look similar in size. The labels give the exact figures.</p>
-                <p>Source: ABS, Consumer Price Index, Australia, August 2026. City positions are approximate city centres. Boundaries: Natural Earth.</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_inflation_map"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>China buys more of our exports than Japan, South Korea and the United States combined</h2>
-                <p>In 2025, goods exports to China were A$176 billion, about 34% of the total. Japan (A$62 billion), South Korea (A$42 billion) and the United States (A$41 billion) came next. These four destinations took about 61% of everything we sold overseas.</p>
-                <p>Line width shows the value of exports. Each line runs from the middle of Australia to the middle of the destination country, so the lines are not shipping routes. Only the 15 largest destinations are shown, which together make up about 89% of exports. Hover over a line or dot for the exact figures.</p>
-                <p>Source: DFAT, Merchandise trade statistical pivot tables (calendar year 2025). Boundaries: Natural Earth.</p>
-            </div>
-            <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_flow_map"></div>
-            </div>
-        </div>
-        <div class="pure-g">
-            <div class="pure-u-1 pure-u-md-1-3">
-                <h2>Of every 100 Australians aged 15 and over, 64 have a job</h2>
-                <p>In August 2026, about 64 of every 100 Australians aged 15 and over were in a job. Another 3 were out of work and looking for one. The other 33 were neither working nor looking for work, for example because they are retired or studying full time.</p>
+                <h3>Of every 100 Australians aged 15 and over, 64 have a job</h3>
+                <p>In August 2026, about 64 of every 100 Australians aged 15 and over were in a job. Economists call this the employment ratio. Another 3 were out of work and looking for one. The other 33 were neither working nor looking for work, for example because they are retired or studying full time.</p>
                 <p>Each person icon stands for one in every 100 people, so the three groups add up to 100. The unemployment rate of 4.6% is measured against people in the labour force (67 of every 100), not against everyone, which is why 3 icons are red rather than 5.</p>
-                <p>Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
+                <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
             </div>
             <div class="pure-u-1 pure-u-md-2-3">
                 <div id="vis_icon_array"></div>
@@ -169,11 +64,71 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
-                <h2>Eating out fell by more than half in April 2020 and was back above its 2019 level by February 2022</h2>
-                <p>Spending on hotels, cafes and restaurants fell to 43% of its August 2019 level in April 2020. Transport fell almost as far, to 45%, while food spending jumped in March 2020 and stayed about 10% higher for the rest of the year. By August 2026, spending in every category except alcohol and tobacco was roughly 40% to 70% higher than in August 2019.</p>
-                <p>Alcohol and tobacco is the exception. It rose during 2020, slipped back to its August 2019 level in early 2024, and by August 2026 was about 20% lower.</p>
-                <p>Figures are seasonally adjusted and in current prices, so part of each rise is higher prices. The dashed line shows consumer prices overall (CPI), which rose about 28% between September 2019 and June 2026. A category above that line rose by more than prices overall. Hover over a line to see its category.</p>
-                <p>Source: ABS, Monthly Household Spending Indicator, August 2026 (seasonally adjusted); ABS, Consumer Price Index, Australia (quarterly index).</p>
+                <h3>The share of Australians in work fell sharply in 2020, then climbed higher than before</h3>
+                <p>The employment ratio is the share of people aged 15 and over who are in a job, like the 64 in every 100 above. In February 2020 it was 62.2%. By May 2020 it had fallen to 57.9%. It was back at its pre-COVID level by May 2021, dipped again in late 2021, then reached 64.4% at several points between 2023 and 2025.</p>
+                <p>Darker blue means a higher share in work. Figures are seasonally adjusted, and blank squares are months outside the data. Hover over a square for the exact figure.</p>
+                <p class="source">Source: ABS, Labour Force, Australia, August 2026 (seasonally adjusted).</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_heatmap"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>More than half of Australia's workers live in New South Wales and Victoria</h3>
+                <p>In August 2026, New South Wales (4.6 million) and Victoria (3.8 million) had about 57% of Australia's employed people between them. Adding Queensland takes the share to 77%. The area of each circle is the number of employed people, so this map shows where the workers are, not how much land there is.</p>
+                <p>Colour shows the employment ratio, which is the share of people aged 15 and over who are in work. The Northern Territory (69.3%) and the ACT (68.8%) are highest, even though theirs are the smallest circles. Tasmania is lowest at 57.5%. The three biggest states are all close to the national figure of 63.9%.</p>
+                <p>This is a Dorling cartogram. Each circle sits near where its state really is, but circles are nudged apart so none overlap, so distances on this map are not accurate. Hover over a circle for the exact figures.</p>
+                <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_cartogram"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>Underemployment is higher than unemployment in every state and territory</h3>
+                <p>In August 2026, 4.6% of Australian workers were unemployed and 6.3% were underemployed, meaning they had a job but wanted more hours. Tasmania was highest on both measures, at 5.2% and 7.1%.</p>
+                <p>The ACT had the lowest unemployment (4.0%) but the widest gap between the two measures. The Northern Territory was the only place where they were almost equal (4.8% and 4.9%).</p>
+                <p>Adding the two measures together shows how much of each workforce is not fully used. The map below does exactly that.</p>
+                <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_unemployment_underemployment"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>Tasmania and Victoria have the biggest share of their workforce who are out of work or want more hours</h3>
+                <p>In August 2026, 10.9% of Australia's labour force was either out of work (4.6%) or wanted more hours (6.3%). Tasmania was highest at 12.3%, followed by Victoria at 12.0%. The Northern Territory (9.7%) and New South Wales (9.8%) were lowest.</p>
+                <p>The ABS calls this the underutilisation rate: the unemployment rate and the underemployment rate added together. Both are measured against the labour force, which means everyone who is working or looking for work. Darker red means more unused labour. Hover over a state to see both parts.</p>
+                <p>Adding the rounded rates can differ from the ABS's own figure by 0.1 percentage points.</p>
+                <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates). Boundaries: Natural Earth.</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_underutilisation_map"></div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Prices and spending</h2>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>Prices rose fastest in Hobart and Adelaide, and slowest in Melbourne</h3>
+                <p>In the year to August 2026, prices rose 4.8% in Hobart and 4.7% in Adelaide. Melbourne had the smallest rise, at 3.5%, followed by Sydney at 3.9%. Those two were the only capital cities below the national rate of 4.0%.</p>
+                <p>The size of each circle shows the rate of price rises. The colour shows whether the city is above or below the national rate. The cities only range from 3.5% to 4.8%, so the circles look similar in size. The labels give the exact figures.</p>
+                <p class="source">Source: ABS, Consumer Price Index, Australia, August 2026. City positions are approximate city centres. Boundaries: Natural Earth.</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_inflation_map"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>Eating out collapsed in 2020, then grew faster than any other kind of spending</h3>
+                <p>Each line shows one kind of household spending compared with its level in August 2019, which is set at 100. The black line is all spending together. It dropped to 76 in April 2020, was back above its February 2020 level by July 2020, and by August 2026 was 49% higher than in August 2019. The dashed line shows consumer prices overall (CPI), which rose about 28% between September 2019 and June 2026.</p>
+                <p>Spending on hotels, cafes and restaurants (blue) fell the furthest, to 43 in April 2020, and was back above its 2019 level by February 2022. By August 2026 it was 68% higher than in 2019, the biggest rise of the nine categories. Alcohol and tobacco (red) is the exception: it slipped back to its 2019 level in early 2024 and by August 2026 was about 20% lower. The grey lines are the other seven categories.</p>
+                <p>Figures are seasonally adjusted and in current prices, so part of every rise is higher prices. The nine categories leave out rent, energy, education and insurance, so they are not all household spending. CPI measures a different basket of goods, so compare the lines roughly. Hover over a line to see its category.</p>
+                <p class="source">Source: ABS, Monthly Household Spending Indicator, August 2026 (seasonally adjusted); ABS, Consumer Price Index, Australia (quarterly index).</p>
             </div>
             <div class="pure-u-1 pure-u-md-2-3">
                 <div id="vis_spending_index"></div>
@@ -181,18 +136,56 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
-                <h2>More than half of Australia's workers live in New South Wales and Victoria</h2>
-                <p>In August 2026, New South Wales (4.6 million) and Victoria (3.8 million) had about 57% of Australia's employed people between them. Adding Queensland takes the share to 77%. The area of each circle is the number of employed people, so this map shows where the workers are, not how much land there is.</p>
-                <p>Colour shows the employment ratio, which is the share of people aged 15 and over who are in work. The Northern Territory (69.3%) and the ACT (68.8%) are highest, even though theirs are the smallest circles. Tasmania is lowest at 57.5%. The three biggest states are all close to the national figure of 63.9%.</p>
-                <p>This is a Dorling cartogram. Each circle sits near where its state really is, but circles are nudged apart so none overlap, so distances on this map are not accurate. Hover over a circle for the exact figures.</p>
-                <p>Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
+                <h3>Transport and recreation added the most to monthly spending, about A$5 billion each</h3>
+                <p>Between August 2019 and August 2026, monthly household spending across the nine categories rose from A$55 billion to A$82 billion, an increase of A$27 billion. Transport and recreation and culture each added about A$5.3 billion a month, together nearly two-fifths of the rise. Eating out added A$4.6 billion and food A$4.2 billion.</p>
+                <p>The number beside each name is the change in A$ billion a month. Alcohol and tobacco was the only category to fall, by A$0.7 billion.</p>
+                <p>Figures are seasonally adjusted and in current prices, so part of every rise is higher prices rather than people buying more. They cover nine ABS spending categories, not all household spending.</p>
+                <p class="source">Source: ABS, Monthly Household Spending Indicator, August 2026 (seasonally adjusted).</p>
             </div>
             <div class="pure-u-1 pure-u-md-2-3">
-                <div id="vis_cartogram"></div>
+                <div id="vis_spending_slope_graph"></div>
             </div>
         </div>
+
+        <h2 class="section-title">Industries and trade</h2>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>Most industries grew in the June quarter, but manufacturing fell the most</h3>
+                <p>Of the 19 industries shown, 14 grew and 5 shrank. Professional, scientific and technical services grew the most (+2.3%). Manufacturing fell the most (-1.9%), followed by administrative and support services (-1.4%).</p>
+                <p>Gross value added (GVA) is the value an industry adds to the economy. Bars show the percentage change on the March quarter, adjusted for price changes and seasonal patterns. This is one quarter only, so it shows a snapshot rather than a trend.</p>
+                <p class="source">Source: ABS, Australian National Accounts: National Income, Expenditure and Product, June 2026.</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_gvagrowthindustry"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>China buys more of our exports than Japan, South Korea and the United States combined</h3>
+                <p>In 2025, Australia sold A$176 billion of goods to China. That is 33.7% of all goods exports, or one dollar in every three, and almost three times as much as to Japan (A$62 billion). China's total is more than Japan, South Korea (A$42 billion) and the United States (A$41 billion) combined, and these four destinations took about 61% of everything we sold overseas.</p>
+                <p>On the map, line width shows the value of exports. Each line runs from the middle of Australia to the middle of the destination country, so the lines are not shipping routes. The bars give the exact figure for each of the 15 largest destinations, which together make up about 89% of exports.</p>
+                <p>These figures cover goods only, not services such as tourism and education. Values are in current prices. Hover over a line, dot or bar for the exact figures.</p>
+                <p class="source">Source: DFAT, Merchandise trade statistical pivot tables (calendar year 2025). Boundaries: Natural Earth.</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_flow_map"></div>
+                <div id="vis_top_exports" class="chart-below"></div>
+            </div>
+        </div>
+        <div class="pure-g">
+            <div class="pure-u-1 pure-u-md-1-3">
+                <h3>From one in eight to one in three: China's growing share of our exports</h3>
+                <p>China bought about 12% of our goods exports in 2006. That rose to about 41% in 2020 and eased to about 34% in 2025. Over the same period, total goods exports grew from A$164 billion to A$524 billion.</p>
+                <p>Each coloured band is a destination, and its thickness shows the value of exports. Read the chart for the overall pattern rather than exact figures. Values are in current prices. DFAT notes that some country totals are understated for confidentiality reasons.</p>
+                <p class="source">Source: DFAT, Merchandise trade statistical pivot tables (calendar years 2006-2025).</p>
+            </div>
+            <div class="pure-u-1 pure-u-md-2-3">
+                <div id="vis_streamgraph"></div>
+            </div>
+        </div>
+
         <footer>
-            <h2>Data sources</h2>
+            <h2 class="section-title">Data sources</h2>
             <ul>
                 <li>Australian Bureau of Statistics, <a href="https://www.abs.gov.au/statistics/labour/employment-and-unemployment/labour-force-australia/aug-2026">Labour Force, Australia, August 2026</a>.</li>
                 <li>Australian Bureau of Statistics, <a href="https://www.abs.gov.au/statistics/economy/price-indexes-and-inflation/consumer-price-index-australia/aug-2026">Consumer Price Index, Australia, August 2026</a>.</li>
@@ -201,6 +194,9 @@
                 <li>Department of Foreign Affairs and Trade, <a href="https://www.dfat.gov.au/trade/trade-and-investment-data-information-and-publications/trade-statistics/merchandise-trade-statistical-pivot-tables">Merchandise trade statistical pivot tables</a>.</li>
                 <li>Natural Earth, <a href="https://www.naturalearthdata.com/downloads/">free vector and raster map data</a>.</li>
             </ul>
+
+            <h2 class="section-title">About this page</h2>
+            <p>Made by Chenul Punchihewa in October 2026 for FIT3179 Data Visualisation 2 at Monash University. Every chart is built with Vega-Lite, and the specifications and data files are in the <a href="https://github.com/chenulpunchihewa/fit3179-dv2">GitHub repository</a>.</p>
         </footer>
 
     </div>
