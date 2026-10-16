@@ -55,8 +55,8 @@ vegaEmbed("#vis_unemployment_map", vg_unemployment_choropleth, {actions: false})
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
 
-var vg_inflation_by_city = "js/inflation_by_city.vg.json";
-// "#vis_inflation_by_city_map" is the id of the new div in index.html.
-vegaEmbed("#vis_inflation_by_city_map", vg_inflation_by_city, {actions: false}).then(function(result) {
+var vg_inflation_symbol_map = "js/inflation_symbol_map.vg.json";
+// "#vis_inflation_map" is the id of the new div in index.html.
+vegaEmbed("#vis_inflation_map", vg_inflation_symbol_map, {actions: false}).then(function(result) {
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
