@@ -42,3 +42,9 @@ var vg_economy_indicators = "js/economy_indicators.vg.json";
 vegaEmbed("#vis_economy_indicators", vg_economy_indicators, {actions: false}).then(function(result) {
     // result.view is the Vega view instance (not needed yet)
 }).catch(console.error);
+
+var vg_spending_slope = "js/spending_slope.vg.json";
+// "#vis_spending_slope_graph" is the id of the div in index.html. {actions: false} hides the three-dot menu with "Open in Vega Editor" (Week 9 studio).
+vegaEmbed("#vis_spending_slope_graph", vg_spending_slope, {actions: false}).then(function(result) {
+    // result.view is the Vega view instance (not needed yet)
+}).catch(console.error);

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Monthly household spending by category, August 2019 and August 2026",
+  "width": 260,
+  "height": 380,
+  "data": {"url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/spending_by_category_2019_2026.csv"},
+  "encoding": {
+    "x": {
+    "field": "month",
+    "type": "ordinal",
+    "sort": ["Aug 2019", "Aug 2026"],
+    "title": null,
+    "axis": {"labelAngle": 0, "labelFontSize": 14, "ticks": false, "domain": false}
+    },
+    "y": {"field": "spending_aud_bn", "type": "quantitative", "title": "A$ billion a month"},
+    "detail": {"field": "category", "type": "nominal"},
+    "color": {
+      "condition": [
+        {"test": "datum.category == 'Alcoholic beverages and tobacco'", "value": "#b2182b"},
+        {"test": "datum.category == 'Hotels, cafes and restaurants'", "value": "#2166ac"}
+      ],
+      "value": "#bdbdbd"
+    }
+  },
+  "layer": [
+    {"mark": {"type": "line", "strokeWidth": 2.5}},
+    {"mark": {"type": "circle", "size": 70, "opacity": 1}},
+    {
+    "transform": [{"filter": "datum.month == 'Aug 2026'"}],
+    "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 13},
+    "encoding": {
+        "text": {"field": "category", "type": "nominal"},
+        "color": {
+        "condition": [
+            {"test": "datum.category == 'Alcoholic beverages and tobacco'", "value": "#b2182b"},
+            {"test": "datum.category == 'Hotels, cafes and restaurants'", "value": "#2166ac"}
+        ],
+        "value": "#555555"
+        }
+    }
+    }
+  ],
+  "config": {
+  "view": {"stroke": null},
+  "axis": {"labelFontSize": 12, "titleFontSize": 12}
+}
+}
