@@ -8,7 +8,7 @@
     <!-- Google Fonts (Week 5, section 3.1) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@800&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Pure.css and its responsive grid (Week 5, section 4) -->
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
@@ -27,16 +27,63 @@
 <body>
     <div class="page">
 
-        <header>
-            <h1>Australia's economy: jobs, spending and trade</h1>
-            <p class="byline">By Chenul Punchihewa, October 2026</p>
-            <p class="intro">How are Australians doing? We look at who has a job, how prices and spending have moved, which industries are growing and who buys what we sell. Hover over any chart for the exact figures.</p>
+        <header class="hero">
+
+            <!-- Left column: title, intro, byline and the hover hint -->
+            <div class="hero-text">
+                <p class="kicker">A visual guide</p>
+                <h1>Australia's economy: <span class="accent">jobs, spending and trade</span></h1>
+                <p class="intro">How are Australians doing? We look at who has a job, how prices and spending have moved, which industries are growing and who buys what we sell.</p>
+                <p class="byline">By <strong>Chenul Punchihewa</strong> &middot; October 2026 &middot; FIT3179, Monash University</p>
+                <p class="hint">
+                    <!-- A small cursor icon drawn as an inline SVG, so no image file is needed -->
+                    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3 1.5v11l3-2.6 2 4.4 2-.9-2-4.3 4-.1z"/></svg>
+                    Hover over any chart for the exact figures
+                </p>
+            </div>
+
+            <!-- Right column: four headline numbers. Each one is also explained, with its source, in the chart rows below. -->
+            <div class="glance">
+                <p class="glance-title">Australia at a glance</p>
+                <div class="tiles">
+                    <div class="tile tile-tint">
+                        <p class="tile-when">August 2026</p>
+                        <p class="tile-number">64 in 100</p>
+                        <p class="tile-label">Australians aged 15 and over have a job</p>
+                    </div>
+                    <div class="tile">
+                        <p class="tile-when">August 2026</p>
+                        <p class="tile-number">4.6%</p>
+                        <p class="tile-label">of workers are unemployed</p>
+                    </div>
+                    <div class="tile">
+                        <p class="tile-when">Year to August 2026</p>
+                        <p class="tile-number">4.0%</p>
+                        <p class="tile-label">price rises over the past year</p>
+                    </div>
+                    <div class="tile tile-tint">
+                        <p class="tile-when">Calendar year 2025</p>
+                        <p class="tile-number">A$176bn</p>
+                        <p class="tile-label">of goods sold to China</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick links: each one scrolls down to the section with the matching id below -->
+            <nav class="jump" aria-label="Jump to a section">
+                <span class="jump-label">Jump to</span>
+                <a href="#big-picture">The Big Picture</a>
+                <a href="#work">Work</a>
+                <a href="#prices-and-spending">Prices and Spending</a>
+                <a href="#industries-and-trade">Industries and Trade</a>
+            </nav>
+
         </header>
 
         <!-- Each row is one row of the Pure grid: text on the left (1/3), chart on the right (2/3) on wide screens;
              on narrow screens each part takes the full width and they stack. -->
 
-        <h2 class="section-title">The big picture</h2>
+        <h2 class="section-title" id="big-picture">The big picture</h2>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
                 <h3>In 2020 the economy, jobs and savings all shifted at once, then prices took off</h3>
@@ -50,7 +97,7 @@
             </div>
         </div>
 
-        <h2 class="section-title">Work</h2>
+        <h2 class="section-title" id="work">Work</h2>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
                 <h3>Of every 100 Australians aged 15 and over, 64 have a job</h3>
@@ -110,7 +157,7 @@
             </div>
         </div>
 
-        <h2 class="section-title">Prices and spending</h2>
+        <h2 class="section-title" id="prices-and-spending">Prices and spending</h2>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
                 <h3>Prices rose fastest in Hobart and Adelaide, and slowest in Melbourne</h3>
@@ -147,7 +194,7 @@
             </div>
         </div>
 
-        <h2 class="section-title">Industries and trade</h2>
+        <h2 class="section-title" id="industries-and-trade">Industries and trade</h2>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-md-1-3">
                 <h3>Most industries grew in the June quarter, but manufacturing fell the most</h3>

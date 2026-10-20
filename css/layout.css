@@ -58,3 +58,71 @@ footer .section-title {
     margin-left: 0;
     margin-right: 0;
 }
+
+/* ---------- Header ---------- */
+
+/* Smooth scrolling when a "Jump to" link is clicked (skipped for people who ask their device for less motion) */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* The header is a grid: one column on small screens (text, then tiles, then links stacked),
+   two columns from 960px wide (text on the left, tiles on the right) */
+.hero {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+}
+
+@media (min-width: 60em) {
+    .hero {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 28px 56px;
+        align-items: center;
+    }
+}
+
+/* min-width: 0 lets a grid cell shrink instead of pushing the page wider than the screen */
+.hero > * {
+    min-width: 0;
+}
+
+/* The "Jump to" row runs underneath both columns */
+.jump {
+    grid-column: 1 / -1;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+}
+
+.jump-label {
+    grid-column: 1 / -1;
+}
+
+@media (min-width: 60em) {
+    .jump {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Four tiles in a 2 x 2 grid (one per row on a phone) */
+.tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 18px;
+}
+
+@media (max-width: 30em) {
+    .tiles {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* When a link jumps to a section, stop a little above it so the section title is not stuck to the top edge */
+.section-title {
+    scroll-margin-top: 24px;
+}
