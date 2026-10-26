@@ -27,7 +27,7 @@ footer {
 
 /* White space between one chart row and the next */
 .pure-g {
-    margin-bottom: 56px;
+    margin-bottom: 44px;
 }
 
 /* A second chart stacked under the first in the same column (the export bars under the flow map) */
@@ -35,17 +35,41 @@ footer {
     margin-top: 24px;
 }
 
-/* If a chart is ever wider than its column (a narrow window), it scrolls inside its own box
-   instead of making the whole page scroll sideways */
-.pure-u-md-2-3 {
+/* If a chart is ever wider than its column (a narrow window), the chart scrolls inside its own box
+   instead of making the whole page scroll sideways. The text under a chart stays put. */
+.pure-g .vega-embed {
+    display: block;
+    max-width: 100%;
     overflow-x: auto;
+}
+
+/* A canvas is an inline element, which leaves a small gap under it for letter descenders. This removes the gap. */
+.pure-g .vega-embed canvas,
+.pure-g .vega-embed svg {
+    display: block;
+}
+
+/* "How to read this chart": the label sits in a narrow left cell and the text in a wider right cell,
+   which keeps the lines short (about 60 to 70 characters) and the box compact. Stacked on a phone. */
+.how-to-read {
+    display: grid;
+    grid-template-columns: 9.5rem 1fr;
+    gap: 0 20px;
+    align-items: start;
+}
+
+@media (max-width: 40em) {
+    .how-to-read {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
 }
 
 /* Section titles split the page into four parts of the story */
 .section-title {
-    margin: 64px 12px 28px;
-    padding-top: 12px;
-    border-top: 3px solid #222222;
+    margin: 56px 12px 24px;
+    padding-top: 14px;
+    border-top: 3px solid var(--ink);
 }
 
 footer {
