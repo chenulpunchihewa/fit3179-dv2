@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Bar chart of the quarterly percentage change in gross value added for 19 industries, June quarter 2026, sorted from the largest rise to the largest fall (blue = grew, red = shrank)",
-  "width": 400,
+  "width": 340,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/gva_industry_growth_jun2026.csv"

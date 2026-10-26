@@ -5,8 +5,18 @@
 
 // Options shared by every chart:
 //   actions: false  hides the three-dot menu (Week 9 studio).
-//   config.font     draws all chart text (titles, axes, labels) in Open Sans, the same font as the page.
-var embedOptions = {actions: false, config: {font: "Open Sans"}};
+//   config         one shared look for the text in every chart: Open Sans (the page font), 12 px axis and legend text,
+//                  and the same dark text colours as the page. A chart's own config can still override these.
+var embedOptions = {
+    actions: false,
+    config: {
+        font: "Open Sans",
+        axis: {labelFontSize: 12, titleFontSize: 12, labelColor: "#2a3a4d", titleColor: "#0f2742"},
+        legend: {labelFontSize: 12, titleFontSize: 12, labelColor: "#2a3a4d", titleColor: "#0f2742"},
+        header: {labelColor: "#0f2742"},
+        title: {color: "#0f2742"}
+    }
+};
 
 // A chart is drawn once, so it must be drawn after the fonts have arrived or it would keep a fallback font.
 // This waits for Open Sans (regular and bold), but never longer than 3 seconds.

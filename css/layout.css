@@ -30,6 +30,14 @@ footer {
     margin-bottom: 44px;
 }
 
+/* Each chart is two Pure rows: the headline beside the "How to read" caption, then the findings beside the chart.
+   Keeping them as two rows means the first line of the findings starts level with the top of the chart,
+   and the headline and caption share a top line. No gap is added between the two rows (the h3 and the caption
+   carry their own bottom margin). */
+.pure-g.chart-head {
+    margin-bottom: 0;
+}
+
 /* A second chart stacked under the first in the same column (the export bars under the flow map) */
 .chart-below {
     margin-top: 24px;
@@ -47,22 +55,6 @@ footer {
 .pure-g .vega-embed canvas,
 .pure-g .vega-embed svg {
     display: block;
-}
-
-/* "How to read this chart": the label sits in a narrow left cell and the text in a wider right cell,
-   which keeps the lines short (about 60 to 70 characters) and the box compact. Stacked on a phone. */
-.how-to-read {
-    display: grid;
-    grid-template-columns: 9.5rem 1fr;
-    gap: 0 20px;
-    align-items: start;
-}
-
-@media (max-width: 40em) {
-    .how-to-read {
-        grid-template-columns: 1fr;
-        gap: 6px;
-    }
 }
 
 /* Section titles split the page into four parts of the story */

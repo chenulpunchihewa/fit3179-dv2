@@ -1,26 +1,153 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Four economic indicators, 2018 to 2026",
-  "data": {"url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/chart2_economy_indicators_long.csv"},
-  "facet": {
-    "field": "indicator",
-    "type": "nominal",
-    "title": null,
-    "sort": ["Economic growth over the past year", "Unemployment rate", "Price rises (inflation) over the past year", "Share of income households save"]
-  },
-  "columns": 2,
-  "spec": {
-    "width": 255,
-    "height": 160,
-    "mark": {"type": "line", "color": "#2166ac"},
-    "encoding": {
-      "x": {"field": "date", "type": "temporal", "title": null},
-      "y": {"field": "value_pct", "type": "quantitative", "title": "%"}
-    }
-  },
-  "resolve": {"scale": {"y": "independent"}},
-  "config": {
-  "axis": {"labelFontSize": 12, "titleFontSize": 12},
-  "header": {"labelFontSize": 14, "labelPadding": 8}
+ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+ "description": "Four economic indicators stacked so the June 2020 quarter lines up, 2018 to 2026",
+ "data": {
+  "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/chart2_economy_indicators_long.csv"
+ },
+ "facet": {
+  "field": "indicator",
+  "type": "nominal",
+  "title": null,
+  "sort": [
+   "Economic growth over the past year",
+   "Unemployment rate",
+   "Price rises (inflation) over the past year",
+   "Share of income households save"
+  ],
+  "header": {
+   "labelAnchor": "start",
+   "labelOrient": "top"
   }
+ },
+ "columns": 1,
+ "spec": {
+  "width": 560,
+  "height": 84,
+  "layer": [
+   {
+    "mark": {
+     "type": "line",
+     "color": "#2166ac"
+    },
+    "encoding": {
+     "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": null,
+      "axis": {
+       "labelFontSize": 12,
+       "grid": true
+      }
+     },
+     "y": {
+      "field": "value_pct",
+      "type": "quantitative",
+      "title": null,
+      "scale": {
+       "nice": true
+      },
+      "axis": {
+       "tickCount": 3,
+       "labelExpr": "datum.label + '%'"
+      }
+     }
+    }
+   },
+   {
+    "transform": [
+     {
+      "filter": "datum.quarter_label === 'Jun-20'"
+     }
+    ],
+    "mark": {
+     "type": "rule",
+     "color": "#b2182b",
+     "strokeDash": [
+      3,
+      3
+     ],
+     "strokeWidth": 1.2
+    },
+    "encoding": {
+     "x": {
+      "field": "date",
+      "type": "temporal"
+     }
+    }
+   },
+   {
+    "transform": [
+     {
+      "filter": "datum.quarter_label === 'Jun-20'"
+     }
+    ],
+    "mark": {
+     "type": "point",
+     "filled": true,
+     "color": "#b2182b",
+     "size": 45,
+     "opacity": 1
+    },
+    "encoding": {
+     "x": {
+      "field": "date",
+      "type": "temporal"
+     },
+     "y": {
+      "field": "value_pct",
+      "type": "quantitative"
+     }
+    }
+   },
+   {
+    "transform": [
+     {
+      "filter": "datum.quarter_label === 'Jun-20'"
+     },
+     {
+      "calculate": "format(datum.value_pct,'.1f') + '%'",
+      "as": "lab"
+     }
+    ],
+    "mark": {
+     "type": "text",
+     "align": "left",
+     "dx": 8,
+     "color": "#b2182b",
+     "fontWeight": "bold",
+     "fontSize": 12
+    },
+    "encoding": {
+     "x": {
+      "field": "date",
+      "type": "temporal"
+     },
+     "y": {
+      "field": "value_pct",
+      "type": "quantitative"
+     },
+     "text": {
+      "field": "lab",
+      "type": "nominal"
+     }
+    }
+   }
+  ]
+ },
+ "resolve": {
+  "scale": {
+   "y": "independent"
+  }
+ },
+ "config": {
+  "header": {
+   "labelFontSize": 13,
+   "labelFontWeight": "bold",
+   "labelPadding": 6,
+   "labelColor": "#0f2742"
+  },
+  "axis": {
+   "labelFontSize": 12
+  }
+ }
 }

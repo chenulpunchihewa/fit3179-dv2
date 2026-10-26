@@ -207,27 +207,21 @@ h3 {
     color: var(--muted);
 }
 
-/* "How to read this chart": a pale rounded box directly under the chart it explains */
-.how-to-read {
-    margin-top: 16px;
-    padding: 16px 20px;
-    border-radius: 16px;
-    background-color: var(--tint);
-}
-
-.pure-g .how-to-read p {
-    margin: 0;
-    font-size: 0.95rem;
+/* Caption above a chart: how to read it. It sits at the top of the chart column, level with the headline,
+   so the bottom of each row ends with the chart. A thin blue rule on the left sets it apart from the text. */
+.pure-g .chart-caption {
+    margin: 0 0 14px;
+    padding-left: 14px;
+    border-left: 3px solid var(--blue);
+    max-width: 68ch;
+    font-size: 0.9rem;
     line-height: 1.55;
+    color: var(--muted);
 }
 
-.pure-g .how-to-read .how-label {
-    margin-top: 3px;
-    font-size: 0.72rem;
+.chart-caption .caption-label {
     font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
+    color: var(--ink);
 }
 
 footer p,

@@ -50,7 +50,7 @@
             "domain": ["Above national rate", "Below national rate"],
             "range": ["#b2182b", "#2166ac"]
           },
-          "legend": {"orient": "top", "direction": "horizontal"}
+          "legend": {"orient": "top", "direction": "horizontal", "titleLimit": 260}
         },
         "tooltip": [
           {"field": "city", "type": "nominal", "title": "City"},
