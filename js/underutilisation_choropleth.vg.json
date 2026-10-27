@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Choropleth map of the labour force underutilisation rate (unemployment rate plus underemployment rate) by state and territory, August 2026 (ABS trend estimates)",
+  "description": "Choropleth map of the labour force underutilisation rate (unemployment rate plus underemployment rate) by state and territory, August 2026 (ABS trend estimates). Each state is labelled with its code and rate.",
   "width": 440,
   "height": 380,
   "projection": {"type": "equalEarth", "rotate": [-134, 0]},
@@ -14,27 +14,71 @@
       "from": {
         "data": {"url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/labour_force_by_state_aug2026_trend.csv"},
         "key": "state",
-        "fields": ["unemployment_rate_pct", "underemployment_rate_pct"]
+        "fields": ["state_code", "unemployment_rate_pct", "underemployment_rate_pct"]
       }
     },
     {"filter": "isValid(datum.unemployment_rate_pct)"},
     {"calculate": "toNumber(datum.unemployment_rate_pct) + toNumber(datum.underemployment_rate_pct)", "as": "underutilisation_pct"}
   ],
-  "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
-  "encoding": {
-    "color": {
-      "field": "underutilisation_pct",
-      "type": "quantitative",
-      "title": "Underutilisation rate (%)",
-      "scale": {"scheme": "orangered", "domain": [9, 13]},
-      "legend": {"orient": "bottom-left", "values": [10, 11, 12], "format": ".0f", "gradientLength": 160}
+  "layer": [
+    {
+      "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 1},
+      "encoding": {
+        "color": {
+          "field": "underutilisation_pct",
+          "type": "quantitative",
+          "title": "Underutilisation rate (%)",
+          "scale": {"scheme": "orangered", "domain": [9, 13]},
+          "legend": {"orient": "bottom-left", "values": [10, 11, 12], "format": ".0f", "gradientLength": 160}
+        },
+        "tooltip": [
+          {"field": "properties.name", "type": "nominal", "title": "State or territory"},
+          {"field": "unemployment_rate_pct", "type": "quantitative", "title": "Unemployment rate (%)", "format": ".1f"},
+          {"field": "underemployment_rate_pct", "type": "quantitative", "title": "Underemployment rate (%)", "format": ".1f"},
+          {"field": "underutilisation_pct", "type": "quantitative", "title": "Both added together (%)", "format": ".1f"}
+        ]
+      }
     },
-    "tooltip": [
-      {"field": "properties.name", "type": "nominal", "title": "State or territory"},
-      {"field": "unemployment_rate_pct", "type": "quantitative", "title": "Unemployment rate (%)", "format": ".1f"},
-      {"field": "underemployment_rate_pct", "type": "quantitative", "title": "Underemployment rate (%)", "format": ".1f"},
-      {"field": "underutilisation_pct", "type": "quantitative", "title": "Both added together (%)", "format": ".1f"}
-    ]
-  },
+    {
+      "transform": [
+        {"filter": "datum.state_code != 'ACT' && datum.state_code != 'VIC' && datum.state_code != 'TAS'"},
+        {"calculate": "[datum.state_code, format(datum.underutilisation_pct, '.1f')]", "as": "label_lines"}
+      ],
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "lineHeight": 14},
+      "encoding": {
+        "longitude": {"field": "properties.longitude", "type": "quantitative"},
+        "latitude": {"field": "properties.latitude", "type": "quantitative"},
+        "text": {"field": "label_lines", "type": "nominal"},
+        "color": {
+          "condition": {"test": "datum.underutilisation_pct > 11.5", "value": "#ffffff"},
+          "value": "#2a3a4d"
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.state_code == 'VIC'"},
+        {"calculate": "[datum.state_code, format(datum.underutilisation_pct, '.1f')]", "as": "label_lines"}
+      ],
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "lineHeight": 14, "align": "right", "dx": -30, "dy": 14, "color": "#2a3a4d"},
+      "encoding": {
+        "longitude": {"field": "properties.longitude", "type": "quantitative"},
+        "latitude": {"field": "properties.latitude", "type": "quantitative"},
+        "text": {"field": "label_lines", "type": "nominal"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.state_code == 'TAS'"},
+        {"calculate": "[datum.state_code, format(datum.underutilisation_pct, '.1f')]", "as": "label_lines"}
+      ],
+      "mark": {"type": "text", "fontSize": 12, "fontWeight": "bold", "lineHeight": 14, "align": "left", "dx": 28, "dy": 0, "color": "#2a3a4d"},
+      "encoding": {
+        "longitude": {"field": "properties.longitude", "type": "quantitative"},
+        "latitude": {"field": "properties.latitude", "type": "quantitative"},
+        "text": {"field": "label_lines", "type": "nominal"}
+      }
+    }
+  ],
   "config": {"view": {"stroke": null}}
 }

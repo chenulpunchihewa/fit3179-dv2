@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Heatmap of Australia's monthly employment-to-population ratio (seasonally adjusted), August 2016 to August 2026. Each row is a year and each column a month.",
-  "width": 500,
+  "width": 590,
   "height": 297,
   "padding": {"left": 0, "top": 5, "right": 5, "bottom": 5},
   "view": {"fill": "#dcdfe3", "stroke": null},

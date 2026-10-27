@@ -1,33 +1,51 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Dot plot comparing the unemployment and underemployment rates for each state and territory, August 2026 (ABS trend estimates).",
+  "description": "Connected dot plot comparing the unemployment and underemployment rates for each state and territory, August 2026 (ABS trend estimates), sorted from the highest underemployment rate to the lowest. The grey line between the two dots is the gap.",
   "width": 300,
   "height": 360,
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/labour_force_by_state_aug2026_trend.csv"
   },
-  "transform": [
-    {"fold": ["unemployment_rate_pct", "underemployment_rate_pct"], "as": ["measure", "rate"]},
-    {"calculate": "datum.measure == 'unemployment_rate_pct' ? 'Unemployment' : 'Underemployment'", "as": "measure_label"}
-  ],
-  "mark": {"type": "circle", "size": 120},
   "encoding": {
-    "x": {"field": "rate", "type": "quantitative", "title": "Rate (%)"},
-    "y": {"field": "state", "type": "nominal", "title": null},
-    "color": {
-      "field": "measure_label",
+    "y": {
+      "field": "state",
       "type": "nominal",
       "title": null,
-      "scale": {
-        "domain": ["Unemployment", "Underemployment"],
-        "range": ["#b2182b", "#e08214"]
-      },
-      "legend": {"orient": "top"}
+      "sort": {"field": "underemployment_rate_pct", "op": "max", "order": "descending"}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rule", "color": "#c4c4c4", "strokeWidth": 3},
+      "encoding": {
+        "x": {"field": "unemployment_rate_pct", "type": "quantitative", "title": "Rate (%)"},
+        "x2": {"field": "underemployment_rate_pct"}
+      }
     },
-    "tooltip": [
-      {"field": "state", "type": "nominal", "title": "State"},
-      {"field": "measure_label", "type": "nominal", "title": "Measure"},
-      {"field": "rate", "type": "quantitative", "title": "Rate (%)", "format": ".1f"}
-    ]
-  }
+    {
+      "transform": [
+        {"fold": ["unemployment_rate_pct", "underemployment_rate_pct"], "as": ["measure", "rate"]},
+        {"calculate": "datum.measure == 'unemployment_rate_pct' ? 'Unemployment' : 'Underemployment'", "as": "measure_label"}
+      ],
+      "mark": {"type": "circle", "size": 120, "opacity": 1},
+      "encoding": {
+        "x": {"field": "rate", "type": "quantitative", "title": "Rate (%)"},
+        "color": {
+          "field": "measure_label",
+          "type": "nominal",
+          "title": null,
+          "scale": {
+            "domain": ["Unemployment", "Underemployment"],
+            "range": ["#b2182b", "#e08214"]
+          },
+          "legend": {"orient": "top"}
+        },
+        "tooltip": [
+          {"field": "state", "type": "nominal", "title": "State"},
+          {"field": "measure_label", "type": "nominal", "title": "Measure"},
+          {"field": "rate", "type": "quantitative", "title": "Rate (%)", "format": ".1f"}
+        ]
+      }
+    }
+  ]
 }

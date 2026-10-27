@@ -1,38 +1,101 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Streamgraph of Australia's goods exports by destination, 2006 to 2025 (A$ billion, current prices). The thickness of each band is the value of exports to that destination.",
-  "width": 470,
+  "description": "Streamgraph of Australia's goods exports to China, Japan, South Korea, the United States and all other countries, 2006 to 2025 (A$ billion, current prices). The thickness of each band is the value of exports to that destination. A scale bar shows how much A$100 billion is, because a streamgraph has no y-axis.",
+  "width": 500,
   "height": 320,
+  "padding": {"left": 0, "top": 5, "right": 5, "bottom": 5},
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/exports_by_destination_year.csv"
   },
-  "mark": "area",
-  "encoding": {
-    "x": {
-      "field": "year",
-      "type": "quantitative",
-      "title": null,
-      "axis": {"format": "d", "tickMinStep": 1, "values": [2006, 2010, 2015, 2020, 2025]},
-      "scale": {"nice": false}
+  "transform": [
+    {
+      "calculate": "indexof(['China', 'Japan', 'South Korea', 'United States'], datum.destination) >= 0 ? datum.destination : 'All other countries'",
+      "as": "group"
     },
-    "y": {
-      "aggregate": "sum",
-      "field": "exports_aud_bn",
-      "type": "quantitative",
-      "stack": "center",
-      "axis": null
+    {"aggregate": [{"op": "sum", "field": "exports_aud_bn", "as": "value"}], "groupby": ["year", "group"]},
+    {
+      "calculate": "indexof(['China', 'Japan', 'South Korea', 'United States', 'All other countries'], datum.group)",
+      "as": "band_order"
     },
-    "color": {
-      "field": "destination",
-      "type": "nominal",
-      "title": null,
-      "scale": {
-        "domain": ["China", "Japan", "South Korea", "United States", "United Kingdom", "India", "Taiwan", "Singapore", "Hong Kong", "New Zealand", "All other countries"],
-        "range": ["#2166ac", "#35978f", "#8c6bb1", "#d8b365", "#80b1d3", "#bf812d", "#c7eae5", "#b8a9c9", "#dfc27d", "#a6bddb", "#bdbdbd"]
+    {
+      "stack": "value",
+      "groupby": ["year"],
+      "offset": "center",
+      "sort": [{"field": "band_order", "order": "ascending"}],
+      "as": ["band_start", "band_end"]
+    },
+    {"calculate": "(datum.band_start + datum.band_end) / 2", "as": "band_middle"}
+  ],
+  "layer": [
+    {
+      "mark": {"type": "area"},
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "quantitative",
+          "title": null,
+          "axis": {"format": "d", "values": [2006, 2010, 2015, 2020, 2025]},
+          "scale": {"nice": false}
+        },
+        "y": {"field": "band_start", "type": "quantitative", "axis": null},
+        "y2": {"field": "band_end"},
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": ["China", "Japan", "South Korea", "United States", "All other countries"],
+            "range": ["#2166ac", "#35978f", "#8c6bb1", "#d8b365", "#bdbdbd"]
+          }
+        },
+        "tooltip": [
+          {"field": "group", "type": "nominal", "title": "Destination"}
+        ]
       }
     },
-    "tooltip": [
-      {"field": "destination", "type": "nominal", "title": "Destination"}
-    ]
-  }
+    {
+      "transform": [{"filter": "datum.year == 2025"}],
+      "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 8, "fontSize": 12, "fontWeight": "bold"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "band_middle", "type": "quantitative"},
+        "text": {"field": "group", "type": "nominal"},
+        "color": {
+          "field": "group",
+          "type": "nominal",
+          "legend": null,
+          "scale": {
+            "domain": ["China", "Japan", "South Korea", "United States", "All other countries"],
+            "range": ["#2166ac", "#1f7a73", "#6e4f95", "#8a6a1f", "#6b6b6b"]
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.year == 2006 && datum.group == 'China'"},
+        {"calculate": "400", "as": "bar_start"},
+        {"calculate": "500", "as": "bar_end"}
+      ],
+      "mark": {"type": "rule", "strokeWidth": 4, "strokeCap": "butt", "color": "#0f2742", "dx": 4},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "bar_start", "type": "quantitative"},
+        "y2": {"field": "bar_end"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.year == 2006 && datum.group == 'China'"},
+        {"calculate": "450", "as": "bar_middle"}
+      ],
+      "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 14, "fontSize": 12, "fontWeight": "bold", "color": "#0f2742"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "bar_middle", "type": "quantitative"},
+        "text": {"value": "= A$100 billion"}
+      }
+    }
+  ],
+  "resolve": {"scale": {"color": "independent"}}
 }

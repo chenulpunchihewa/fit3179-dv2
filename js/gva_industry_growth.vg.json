@@ -1,28 +1,50 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Bar chart of the quarterly percentage change in gross value added for 19 industries, June quarter 2026, sorted from the largest rise to the largest fall (blue = grew, red = shrank)",
-  "width": 340,
+  "width": 358,
   "height": 400,
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/gva_industry_growth_jun2026.csv"
   },
-  "mark": "bar",
   "encoding": {
     "x": {
       "field": "quarterly_growth_pct",
       "type": "quantitative",
-      "title": "% change on the previous quarter"
+      "title": "% change on the previous quarter",
+      "axis": {"values": [-2, -1, 0, 1, 2], "format": "d"},
+      "scale": {"domain": [-2.6, 2.8]}
     },
     "y": {
       "field": "industry",
       "type": "nominal",
-      "title": "Industry",
-      "sort": {"field": "quarterly_growth_pct", "order": "descending"},
+      "title": null,
+      "sort": {"field": "quarterly_growth_pct", "op": "max", "order": "descending"},
       "axis": {"labelLimit": 300}
-    },
-    "color": {
-        "condition": {"test": "datum.quarterly_growth_pct < 0", "value": "#b2182b"},
-        "value": "#2166ac"
     }
-  }
+  },
+  "layer": [
+    {
+      "mark": "bar",
+      "encoding": {
+        "color": {
+          "condition": {"test": "datum.quarterly_growth_pct < 0", "value": "#b2182b"},
+          "value": "#2166ac"
+        }
+      }
+    },
+    {
+      "transform": [{"filter": "datum.quarterly_growth_pct >= 0"}],
+      "mark": {"type": "text", "align": "left", "baseline": "middle", "dx": 4, "fontSize": 12, "color": "#2a3a4d"},
+      "encoding": {
+        "text": {"field": "quarterly_growth_pct", "type": "quantitative", "format": "+.1f"}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.quarterly_growth_pct < 0"}],
+      "mark": {"type": "text", "align": "right", "baseline": "middle", "dx": -4, "fontSize": 12, "color": "#2a3a4d"},
+      "encoding": {
+        "text": {"field": "quarterly_growth_pct", "type": "quantitative", "format": "+.1f"}
+      }
+    }
+  ]
 }
