@@ -1,19 +1,17 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Bar chart of Australia's goods exports to its 15 largest destinations in 2025, sorted from largest to smallest, with China highlighted. The data file is already ordered from largest to smallest, so sort is null to keep that order.",
+  "description": "Bar chart of Australia's goods exports to its 15 largest destinations in 2025, sorted from largest to smallest, with China highlighted. A dashed line marks the combined value of exports to Japan, South Korea and the United States, so the China bar can be seen to reach further. The data file is already ordered from largest to smallest, so sort is null to keep that order.",
   "width": 400,
   "height": 330,
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/exports_top_destinations_2025.csv"
   },
-  "encoding": {
-    "y": {"field": "destination", "type": "nominal", "sort": null, "title": null, "axis": {"labelFontSize": 12}},
-    "x": {"field": "exports_aud_bn", "type": "quantitative", "title": "Goods exports in 2025 (A$ billion)"}
-  },
   "layer": [
     {
       "mark": "bar",
       "encoding": {
+        "y": {"field": "destination", "type": "nominal", "sort": null, "title": null, "axis": {"labelFontSize": 12}},
+        "x": {"field": "exports_aud_bn", "type": "quantitative", "title": "Goods exports in 2025 (A$ billion)"},
         "color": {
           "condition": {"test": "datum.destination == 'China'", "value": "#2166ac"},
           "value": "#bdbdbd"
@@ -28,7 +26,43 @@
     {
       "mark": {"type": "text", "align": "left", "dx": 4, "fontSize": 12, "color": "#333333"},
       "encoding": {
+        "y": {"field": "destination", "type": "nominal", "sort": null, "title": null},
+        "x": {"field": "exports_aud_bn", "type": "quantitative", "title": "Goods exports in 2025 (A$ billion)"},
         "text": {"field": "exports_aud_bn", "type": "quantitative", "format": ".0f"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "indexof(['Japan', 'South Korea', 'United States'], datum.destination) >= 0"},
+        {"aggregate": [{"op": "sum", "field": "exports_aud_bn", "as": "combined"}]}
+      ],
+      "mark": {"type": "rule", "strokeDash": [5, 4], "strokeWidth": 1.5, "color": "#0f2742"},
+      "encoding": {
+        "x": {"field": "combined", "type": "quantitative", "title": "Goods exports in 2025 (A$ billion)"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "indexof(['Japan', 'South Korea', 'United States'], datum.destination) >= 0"},
+        {"aggregate": [{"op": "sum", "field": "exports_aud_bn", "as": "combined"}]}
+      ],
+      "mark": {"type": "text", "align": "right", "baseline": "middle", "dx": -6, "fontSize": 12, "fontWeight": "bold", "color": "#0f2742"},
+      "encoding": {
+        "x": {"field": "combined", "type": "quantitative", "title": "Goods exports in 2025 (A$ billion)"},
+        "y": {"value": 236},
+        "text": {"value": "Japan + South Korea +"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "indexof(['Japan', 'South Korea', 'United States'], datum.destination) >= 0"},
+        {"aggregate": [{"op": "sum", "field": "exports_aud_bn", "as": "combined"}]}
+      ],
+      "mark": {"type": "text", "align": "right", "baseline": "middle", "dx": -6, "fontSize": 12, "fontWeight": "bold", "color": "#0f2742"},
+      "encoding": {
+        "x": {"field": "combined", "type": "quantitative", "title": "Goods exports in 2025 (A$ billion)"},
+        "y": {"value": 252},
+        "text": {"value": "United States combined"}
       }
     }
   ],

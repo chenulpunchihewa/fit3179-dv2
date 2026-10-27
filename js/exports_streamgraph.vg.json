@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Streamgraph of Australia's goods exports to China, Japan, South Korea, the United States and all other countries, 2006 to 2025 (A$ billion, current prices). The thickness of each band is the value of exports to that destination. A scale bar shows how much A$100 billion is, because a streamgraph has no y-axis.",
+  "description": "Streamgraph of Australia's goods exports to China, Japan, South Korea, the United States and all other countries, 2006 to 2025 (A$ billion, current prices). The thickness of each band is the value of exports to that destination. A scale bar shows how much A$100 billion is, because a streamgraph has no y-axis. China's share of all exports is labelled for 2006, 2020 and 2025.",
   "width": 500,
   "height": 320,
   "padding": {"left": 0, "top": 5, "right": 5, "bottom": 5},
@@ -13,6 +13,7 @@
       "as": "group"
     },
     {"aggregate": [{"op": "sum", "field": "exports_aud_bn", "as": "value"}], "groupby": ["year", "group"]},
+    {"joinaggregate": [{"op": "sum", "field": "value", "as": "year_total"}], "groupby": ["year"]},
     {
       "calculate": "indexof(['China', 'Japan', 'South Korea', 'United States', 'All other countries'], datum.group)",
       "as": "band_order"
@@ -94,6 +95,42 @@
         "x": {"field": "year", "type": "quantitative"},
         "y": {"field": "bar_middle", "type": "quantitative"},
         "text": {"value": "= A$100 billion"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.year == 2006 && datum.group == 'China'"},
+        {"calculate": "round(datum.value / datum.year_total * 100) + '%'", "as": "note"}
+      ],
+      "mark": {"type": "text", "align": "left", "baseline": "top", "dx": 4, "dy": 6, "fontSize": 13, "fontWeight": "bold", "color": "#2166ac"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "band_start", "type": "quantitative"},
+        "text": {"field": "note", "type": "nominal"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.year == 2020 && datum.group == 'China'"},
+        {"calculate": "round(datum.value / datum.year_total * 100) + '%'", "as": "note"}
+      ],
+      "mark": {"type": "text", "align": "center", "baseline": "middle", "fontSize": 13, "fontWeight": "bold", "color": "white"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "band_middle", "type": "quantitative"},
+        "text": {"field": "note", "type": "nominal"}
+      }
+    },
+    {
+      "transform": [
+        {"filter": "datum.year == 2025 && datum.group == 'China'"},
+        {"calculate": "round(datum.value / datum.year_total * 100) + '%'", "as": "note"}
+      ],
+      "mark": {"type": "text", "align": "right", "baseline": "middle", "dx": -8, "fontSize": 13, "fontWeight": "bold", "color": "white"},
+      "encoding": {
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "band_middle", "type": "quantitative"},
+        "text": {"field": "note", "type": "nominal"}
       }
     }
   ],

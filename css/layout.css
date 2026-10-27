@@ -52,6 +52,12 @@ header {
     margin-bottom: var(--group-gap);
 }
 
+/* The closing summary has no chart, so its paragraphs sit in the wide column. Capping the line length keeps
+   them readable (about 60 characters per line, as in the typography notes). */
+.wrap-up p {
+    max-width: 62ch;
+}
+
 /* If a chart is ever wider than its column (a narrow window), the chart scrolls inside its own box
    instead of making the whole page scroll sideways. The text under a chart stays put. */
 .pure-g .vega-embed,
