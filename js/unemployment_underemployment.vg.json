@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Dot plot comparing the unemployment and underemployment rates for each state and territory, August 2026 (ABS trend estimates).",
-  "width": 420,
-  "height": 320,
+  "width": 300,
+  "height": 360,
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/labour_force_by_state_aug2026_trend.csv"
   },

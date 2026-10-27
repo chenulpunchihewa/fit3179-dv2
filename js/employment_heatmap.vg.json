@@ -1,8 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Heatmap of Australia's monthly employment-to-population ratio (seasonally adjusted), August 2016 to August 2026. Each row is a year and each column a month.",
-  "width": 360,
-  "height": 300,
+  "width": 500,
+  "height": 297,
+  "padding": {"left": 0, "top": 5, "right": 5, "bottom": 5},
+  "view": {"fill": "#dcdfe3", "stroke": null},
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/employment_ratio_monthly.csv"
   },
@@ -19,12 +21,14 @@
       "field": "date",
       "timeUnit": "year",
       "type": "ordinal",
-      "title": null
+      "title": null,
+      "axis": {"orient": "right"}
     },
     "color": {
       "field": "employment_ratio_sa_pct",
       "type": "quantitative",
       "title": "Employment ratio (%)",
+      "legend": {"orient": "bottom", "direction": "horizontal", "gradientLength": 260, "gradientThickness": 12, "values": [60, 62, 64]},
       "scale": {"range": ["#eff3ff", "#bdd7e7", "#6baed6", "#3182bd", "#08519c"]}
     },
     "tooltip": [

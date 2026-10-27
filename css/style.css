@@ -10,7 +10,8 @@ body {
 }
 
 /* Pure sets its own font on every grid column, so we set Open Sans there too (our file loads after Pure) */
-.pure-g [class*="pure-u"] {
+.pure-g [class*="pure-u"],
+.pair-col {
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -22,6 +23,9 @@ body {
     --tint: #e6eff8;  /* pale blue: backgrounds of chips and tiles */
     --text: #2a3a4d;  /* body text */
     --muted: #586779; /* labels, bylines and source lines */
+    --row-gap: 56px;  /* white space between one chart row and the next (used everywhere) */
+    --group-gap: 32px; /* gap between two charts that share one headline and one caption */
+    --rule: #b3c9e0;  /* soft blue: the thin line beside a chart caption */
     --font-display: 'Bricolage Grotesque', 'Open Sans', sans-serif;  /* titles and big numbers */
 }
 
@@ -191,11 +195,12 @@ h3 {
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--ink);
-    margin: 0 0 14px;
+    margin: 0 0 16px;
 }
 
 /* Paragraphs beside the charts */
-.pure-g p {
+.pure-g p,
+.pair p {
     margin: 0 0 14px;
     line-height: 1.6;
 }
@@ -208,20 +213,21 @@ h3 {
 }
 
 /* Caption above a chart: how to read it. It sits at the top of the chart column, level with the headline,
-   so the bottom of each row ends with the chart. A thin blue rule on the left sets it apart from the text. */
-.pure-g .chart-caption {
-    margin: 0 0 14px;
-    padding-left: 14px;
-    border-left: 3px solid var(--blue);
+   so the bottom of each row ends with the chart. A thin, soft blue rule on the left sets it apart from the text. It is the same size and colour as the source
+   lines, so it sits below the findings in the text hierarchy. */
+.chart-caption {
+    margin: 0 0 16px;
+    padding-left: 12px;
+    border-left: 2px solid var(--rule);
     max-width: 68ch;
-    font-size: 0.9rem;
-    line-height: 1.55;
+    font-size: 0.85rem;
+    line-height: 1.5;
     color: var(--muted);
 }
 
+/* The label is only slightly bolder than the text, so the caption stays one quiet block */
 .chart-caption .caption-label {
     font-weight: 700;
-    color: var(--ink);
 }
 
 footer p,

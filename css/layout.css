@@ -18,6 +18,14 @@ html, body {
     padding: 0 12px;
 }
 
+/* The last item in a findings or chart column has no bottom margin of its own, so the white space under every
+   row is exactly --row-gap whichever column happens to be taller. (The headline and caption row is left alone:
+   its bottom margins are the gap above the findings.) */
+.pure-g:not(.chart-head) > div > :last-child,
+.pair-col > :last-child {
+    margin-bottom: 0;
+}
+
 /* Header and footer get the same side padding as the grid columns, so their text lines up with the text below */
 header,
 footer {
@@ -27,7 +35,7 @@ footer {
 
 /* White space between one chart row and the next */
 .pure-g {
-    margin-bottom: 44px;
+    margin-bottom: var(--row-gap);
 }
 
 /* Each chart is two Pure rows: the headline beside the "How to read" caption, then the findings beside the chart.
@@ -38,14 +46,16 @@ footer {
     margin-bottom: 0;
 }
 
-/* A second chart stacked under the first in the same column (the export bars under the flow map) */
-.chart-below {
-    margin-top: 24px;
+/* Two charts that belong to one headline and one caption (the export flow map, then the export bars) are two
+   rows with a smaller gap between them. Each chart still has its own paragraph beside it. */
+.pure-g.tight {
+    margin-bottom: var(--group-gap);
 }
 
 /* If a chart is ever wider than its column (a narrow window), the chart scrolls inside its own box
    instead of making the whole page scroll sideways. The text under a chart stays put. */
-.pure-g .vega-embed {
+.pure-g .vega-embed,
+.pair .vega-embed {
     display: block;
     max-width: 100%;
     overflow-x: auto;
@@ -53,15 +63,62 @@ footer {
 
 /* A canvas is an inline element, which leaves a small gap under it for letter descenders. This removes the gap. */
 .pure-g .vega-embed canvas,
-.pure-g .vega-embed svg {
+.pure-g .vega-embed svg,
+.pair .vega-embed canvas,
+.pair .vega-embed svg {
     display: block;
+}
+
+/* ---------- Layout patterns for the chart rows ---------- */
+
+/* Flipped row: chart on the left, text on the right (the mirror image of the normal row).
+   row-reverse swaps the order of the two columns without changing the HTML. Wide screens only. */
+@media (min-width: 64em) {
+    .pure-g.flip {
+        flex-direction: row-reverse;
+    }
+}
+
+/* Pair: two charts side by side, each with its own headline, caption, chart and text.
+   The columns use "subgrid", so the headlines, captions, charts and text of the two columns
+   line up row by row. On a small screen the two columns simply stack. */
+.pair {
+    margin-bottom: var(--row-gap);
+}
+
+.pair-col {
+    box-sizing: border-box;
+    padding: 0 12px;
+}
+
+/* A little air between a chart and the text under it */
+.pair-chart {
+    margin-bottom: 22px;
+}
+
+@media (min-width: 64em) {
+    .pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pair-col {
+        display: grid;
+        grid-row: span 4;
+        grid-template-rows: subgrid;
+    }
 }
 
 /* Section titles split the page into four parts of the story */
 .section-title {
-    margin: 56px 12px 24px;
+    margin: 100px 12px 28px;
     padding-top: 14px;
     border-top: 3px solid var(--ink);
+}
+
+/* The first section title follows the header, which already has its own space, so it needs less */
+header + .section-title {
+    margin-top: 72px;
 }
 
 footer {

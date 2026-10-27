@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Choropleth map of the labour force underutilisation rate (unemployment rate plus underemployment rate) by state and territory, August 2026 (ABS trend estimates)",
-  "width": 500,
-  "height": 400,
+  "width": 440,
+  "height": 380,
   "projection": {"type": "equalEarth", "rotate": [-134, 0]},
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/australia_states.topojson",
