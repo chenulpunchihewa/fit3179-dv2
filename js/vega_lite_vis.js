@@ -11,7 +11,10 @@ var embedOptions = {
     actions: false,
     config: {
         font: "Open Sans",
-        axis: {labelFontSize: 12, titleFontSize: 12, labelColor: "#2a3a4d", titleColor: "#0f2742"},
+        background: "transparent",                     // charts sit directly on the page's paper colour
+        view: {stroke: null},                          // no thin frame around the plot area
+        axis: {labelFontSize: 12, titleFontSize: 12, labelColor: "#2d3643", titleColor: "#0f2742",
+               gridColor: "#e7dfcb", domainColor: "#b9ad94", tickColor: "#b9ad94"},   // soft warm grey lines
         legend: {labelFontSize: 12, titleFontSize: 12, labelColor: "#2a3a4d", titleColor: "#0f2742"},
         header: {labelColor: "#0f2742"},
         title: {color: "#0f2742"}

@@ -25,15 +25,32 @@
 </head>
 
 <body>
+
+    <!-- Chapter bar: slides in once you scroll past the header. It names the chapter you are in and a row of dots fills as you
+         read down the page (js/page_scroll.js). The links only scroll within this page. -->
+    <nav class="chapter-bar" aria-label="Chapters">
+        <a class="bar-title" href="#top">Australia's economy</a>
+        <ul class="bar-chapters">
+            <li><a href="#big-picture" data-target="big-picture">The Big Picture</a></li>
+            <li><a href="#work" data-target="work">Work</a></li>
+            <li><a href="#prices-and-spending" data-target="prices-and-spending">Prices and Spending</a></li>
+            <li><a href="#industries-and-trade" data-target="industries-and-trade">Industries and Trade</a></li>
+        </ul>
+        <div class="bar-meter" aria-hidden="true"></div>
+    </nav>
+
+    <!-- The header sits in a full-width band with a faint dot pattern (the dots echo the people icons in the first chart) -->
+    <div class="hero-band">
     <div class="page">
 
-        <header class="hero">
+        <header class="hero" id="top">
 
             <!-- Left column: title, intro, byline and the hover hint -->
             <div class="hero-text">
                 <p class="kicker">A visual guide</p>
                 <h1>Australia's economy: <span class="accent">jobs, spending and trade</span></h1>
                 <p class="intro">How are Australians doing? We look at who has a job, how prices and spending have moved, which industries are growing and who buys what we sell.</p>
+                <p class="answer"><strong>The short answer:</strong> a higher share of Australians have a job than before the pandemic, price rises have slowed but are still 4.0% a year, and China buys about one dollar in every three of the goods we sell overseas.</p>
                 <p class="byline">By <strong>Chenul Punchihewa</strong> &middot; October 2026 &middot; FIT3179, Monash University</p>
                 <p class="hint">
                     <!-- A small cursor icon drawn as an inline SVG, so no image file is needed -->
@@ -80,12 +97,35 @@
 
         </header>
 
-        <!-- Each chart has a headline, a "How to read" caption, the findings text and the chart. On wide screens they sit in
+    </div>
+    </div>
+
+    <!-- Each chart has a headline, a "How to read" caption, the findings text and the chart. On wide screens they sit in
              two bands (headline | caption, then text | chart) so the tops line up. A row can be "flipped" (chart on the left),
              and two charts can sit side by side (the "pair"). Every row uses the same 2/5 + 3/5 split from 1280px wide;
              on narrower screens everything stacks. -->
 
-        <h2 class="section-title" id="big-picture">The Big Picture</h2>
+<!-- Chapter 1 cover: a full-width band with one big number that sets up the chapter -->
+    <section class="cover" id="big-picture">
+        <span class="cover-ghost" aria-hidden="true">1</span>
+        <div class="page">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-xl-2-5">
+                    <p class="cover-kicker">Chapter 1</p>
+                    <h2 class="section-title">The Big Picture</h2>
+                    <p class="cover-blurb">What happened to the economy, jobs, prices and savings around 2020.</p>
+                </div>
+                <div class="pure-u-1 pure-u-xl-3-5">
+                    <p class="cover-num">23.3%</p>
+                    <p class="cover-text">of household income was saved in the June 2020 quarter, when the economy shrank and unemployment reached 7.4%.</p>
+                    <p class="cover-source">Source: ABS, Australian National Accounts (June 2026) and Labour Force, Australia (August 2026).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="page">
+
         <div class="pure-g chart-head">
             <div class="pure-u-1 pure-u-xl-2-5">
                 <h3>In 2020 the economy, jobs and savings all shifted at once, then prices took off</h3>
@@ -96,7 +136,7 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>In the June 2020 quarter the economy was smaller than a year earlier, unemployment reached 7.4% and households saved 23.3% of their income. Prices were barely moving: annual inflation was -0.3%.</p>
+                <p>In the June 2020 quarter the economy was smaller than a year earlier, unemployment reached <strong class="hl">7.4%</strong> and households saved <strong class="hl">23.3%</strong> of their income. Prices were barely moving: annual inflation was -0.3%.</p>
                 <p>Inflation then climbed to 7.9% by the end of 2022, while saving fell to 1.8% by September 2023. By June 2026, unemployment was 4.4%, inflation was 3.9%, saving was 6.5% and the economy had grown 2.1% over the year.</p>
                 <p class="source">Source: ABS, Australian National Accounts (June 2026), Labour Force, Australia (August 2026) and Consumer Price Index, Australia (August 2026). Inflation is calculated from ABS CPI index numbers and may differ from the published figure by about 0.1 percentage points. Unemployment is the rate at the end of each quarter.</p>
             </div>
@@ -105,7 +145,29 @@
             </div>
         </div>
 
-        <h2 class="section-title" id="work">Work</h2>
+</div>
+
+    <!-- Chapter 2 cover: a full-width band with one big number that sets up the chapter -->
+    <section class="cover" id="work">
+        <span class="cover-ghost" aria-hidden="true">2</span>
+        <div class="page">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-xl-2-5">
+                    <p class="cover-kicker">Chapter 2</p>
+                    <h2 class="section-title">Work</h2>
+                    <p class="cover-blurb">Who has a job, who wants more hours, and how it differs across the country.</p>
+                </div>
+                <div class="pure-u-1 pure-u-xl-3-5">
+                    <p class="cover-num">57.9%</p>
+                    <p class="cover-text">of Australians aged 15 and over had a job at the May 2020 low, down from 62.2% in February.</p>
+                    <p class="cover-source">Source: ABS, Labour Force, Australia, August 2026 (seasonally adjusted).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="page">
+
         <div class="pure-g chart-head">
             <div class="pure-u-1 pure-u-xl-2-5">
                 <h3>Of every 100 Australians aged 15 and over, 64 have a job</h3>
@@ -116,7 +178,7 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>In August 2026, about 64 of every 100 Australians aged 15 and over were in a job. Economists call this the employment ratio. Another 3 were out of work and looking for one. The other 33 were neither working nor looking for work, for example because they are retired or studying full time.</p>
+                <p>In August 2026, about <strong class="hl">64 of every 100</strong> Australians aged 15 and over were in a job. Economists call this the employment ratio. Another 3 were out of work and looking for one. The other 33 were neither working nor looking for work, for example because they are retired or studying full time.</p>
                 <p>The unemployment rate of 4.6% is measured against the 67 in every 100 who are in the labour force, meaning they are working or looking for work, not against everyone. That is why 3 icons are red rather than 5.</p>
                 <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
             </div>
@@ -135,7 +197,7 @@
         </div>
         <div class="pure-g flip">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>The employment ratio is the share of people aged 15 and over who are in a job, like the 64 in every 100 above. In February 2020 it was 62.2%. By May 2020 it had fallen to 57.9%. It was back at its pre-COVID level by May 2021, dipped again in late 2021, then reached 64.4% at several points between 2023 and 2025.</p>
+                <p>The employment ratio is the share of people aged 15 and over who are in a job, like the 64 in every 100 above. In February 2020 it was 62.2%. By May 2020 it had fallen to <strong class="hl">57.9%</strong>. It was back at its pre-COVID level by May 2021, dipped again in late 2021, then reached 64.4% at several points between 2023 and 2025.</p>
                 <p class="source">Source: ABS, Labour Force, Australia, August 2026 (seasonally adjusted).</p>
             </div>
             <div class="pure-u-1 pure-u-xl-3-5">
@@ -153,7 +215,7 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>In August 2026, New South Wales (4.6 million) and Victoria (3.8 million) had about 57% of Australia's employed people between them. Adding Queensland takes the share to 77%.</p>
+                <p>In August 2026, New South Wales (4.6 million) and Victoria (3.8 million) had about <strong class="hl">57%</strong> of Australia's employed people between them. Adding Queensland takes the share to 77%.</p>
                 <p>The Northern Territory (69.3%) and the ACT (68.8%) have the highest employment ratios, even though theirs are the smallest circles. Tasmania is lowest at 57.5%. The three biggest states are all close to the national figure of 63.9%.</p>
                 <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
             </div>
@@ -170,7 +232,7 @@
                     <div id="vis_unemployment_underemployment"></div>
                 </div>
                 <div class="pair-text">
-                    <p>In August 2026, 4.6% of Australian workers were unemployed and 6.3% were underemployed, meaning they had a job but wanted more hours. Tasmania was highest on both measures, at 5.2% and 7.1%.</p>
+                    <p>In August 2026, 4.6% of Australian workers were unemployed and <strong class="hl">6.3%</strong> were underemployed, meaning they had a job but wanted more hours. Tasmania was highest on both measures, at 5.2% and 7.1%.</p>
                     <p>The ACT had the lowest unemployment (4.0%) but the widest gap between the two measures. The Northern Territory was the only place where they were almost equal (4.8% and 4.9%).</p>
                     <p>Adding the two measures together shows how much of each workforce is not fully used. The next map does exactly that.</p>
                     <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates).</p>
@@ -183,14 +245,36 @@
                     <div id="vis_underutilisation_map"></div>
                 </div>
                 <div class="pair-text">
-                    <p>In August 2026, 10.9% of Australia's labour force was either out of work (4.6%) or wanted more hours (6.3%). Tasmania was highest at 12.3%, followed by Victoria at 12.0%. The Northern Territory (9.7%) and New South Wales (9.8%) were lowest.</p>
+                    <p>In August 2026, <strong class="hl">10.9%</strong> of Australia's labour force was either out of work (4.6%) or wanted more hours (6.3%). Tasmania was highest at 12.3%, followed by Victoria at 12.0%. The Northern Territory (9.7%) and New South Wales (9.8%) were lowest.</p>
                     <p>The ABS calls this the underutilisation rate: the unemployment rate and the underemployment rate added together. Adding the rounded rates can differ from the ABS's own figure by 0.1 percentage points.</p>
                     <p class="source">Source: ABS, Labour Force, Australia, August 2026 (trend estimates). Boundaries: Natural Earth.</p>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title" id="prices-and-spending">Prices and Spending</h2>
+</div>
+
+    <!-- Chapter 3 cover: a full-width band with one big number that sets up the chapter -->
+    <section class="cover" id="prices-and-spending">
+        <span class="cover-ghost" aria-hidden="true">3</span>
+        <div class="page">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-xl-2-5">
+                    <p class="cover-kicker">Chapter 3</p>
+                    <h2 class="section-title">Prices and Spending</h2>
+                    <p class="cover-blurb">How prices and household spending have moved since 2019.</p>
+                </div>
+                <div class="pure-u-1 pure-u-xl-3-5">
+                    <p class="cover-num">7.9%</p>
+                    <p class="cover-text">was the rate of price rises at the end of 2022. By August 2026 it was 4.0%.</p>
+                    <p class="cover-source">Source: ABS, Consumer Price Index, Australia, August 2026. The 2022 rate is calculated from index numbers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="page">
+
         <div class="pure-g chart-head">
             <div class="pure-u-1 pure-u-xl-2-5">
                 <h3>Prices rose fastest in Hobart and Adelaide, and slowest in Melbourne</h3>
@@ -201,7 +285,7 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>In the year to August 2026, prices rose 4.8% in Hobart and 4.7% in Adelaide. Melbourne had the smallest rise, at 3.5%, followed by Sydney at 3.9%. Those two were the only capital cities below the national rate of 4.0%.</p>
+                <p>In the year to August 2026, prices rose <strong class="hl">4.8%</strong> in Hobart and 4.7% in Adelaide. Melbourne had the smallest rise, at 3.5%, followed by Sydney at 3.9%. Those two were the only capital cities below the national rate of 4.0%.</p>
                 <p>The cities only range from 3.5% to 4.8%, so the circles look similar in size. The labels give the exact figures.</p>
                 <p class="source">Source: ABS, Consumer Price Index, Australia, August 2026. City positions are approximate city centres. Boundaries: Natural Earth.</p>
             </div>
@@ -219,7 +303,7 @@
         </div>
         <div class="pure-g flip">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>The black line, all spending together, dropped to 76 in April 2020, was back above its February 2020 level by July 2020, and by August 2026 was 49% higher than in August 2019. The dashed line, consumer prices overall (CPI), rose about 28% between September 2019 and June 2026.</p>
+                <p>The black line, all spending together, dropped to 76 in April 2020, was back above its February 2020 level by July 2020, and by August 2026 was <strong class="hl">49% higher</strong> than in August 2019. The dashed line, consumer prices overall (CPI), rose about 28% between September 2019 and June 2026.</p>
                 <p>Spending on hotels, cafes and restaurants (blue) fell the furthest, to 43 in April 2020, and by August 2026 was 68% higher than in 2019, the biggest rise of the nine categories. Alcohol and tobacco (red) is the exception: it slipped back to its 2019 level in early 2024 and by August 2026 was about 20% lower.</p>
                 <p class="source">Note: Figures are seasonally adjusted and in current prices, so part of every rise is higher prices. The nine categories are the ones the ABS publishes and leave out things like rent, electricity and education, so they are not all household spending. CPI measures a different basket of goods, so compare the lines roughly.</p>
                 <p class="source">Source: ABS, Monthly Household Spending Indicator, August 2026 (seasonally adjusted); ABS, Consumer Price Index, Australia (quarterly index).</p>
@@ -238,7 +322,7 @@
         </div>
         <div class="pure-g">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>Between August 2019 and August 2026, monthly household spending across the nine categories rose from A$55 billion to A$82 billion, an increase of A$27 billion. Transport and recreation and culture each added about A$5.3 billion a month, together nearly two-fifths of the rise. Eating out added A$4.6 billion and food A$4.2 billion.</p>
+                <p>Between August 2019 and August 2026, monthly household spending across the nine categories rose from A$55 billion to A$82 billion, an increase of <strong class="hl">A$27 billion</strong>. Transport and recreation and culture each added about A$5.3 billion a month, together nearly two-fifths of the rise. Eating out added A$4.6 billion and food A$4.2 billion.</p>
                 <p>Alcohol and tobacco was the only category to fall, by A$0.7 billion.</p>
                 <p class="source">Note: Figures are seasonally adjusted and in current prices, so part of every rise is higher prices rather than people buying more. They cover nine ABS spending categories, not all household spending.</p>
                 <p class="source">Source: ABS, Monthly Household Spending Indicator, August 2026 (seasonally adjusted).</p>
@@ -248,7 +332,29 @@
             </div>
         </div>
 
-        <h2 class="section-title" id="industries-and-trade">Industries and Trade</h2>
+</div>
+
+    <!-- Chapter 4 cover: a full-width band with one big number that sets up the chapter -->
+    <section class="cover" id="industries-and-trade">
+        <span class="cover-ghost" aria-hidden="true">4</span>
+        <div class="page">
+            <div class="pure-g">
+                <div class="pure-u-1 pure-u-xl-2-5">
+                    <p class="cover-kicker">Chapter 4</p>
+                    <h2 class="section-title">Industries and Trade</h2>
+                    <p class="cover-blurb">Which industries are growing and who buys what we sell.</p>
+                </div>
+                <div class="pure-u-1 pure-u-xl-3-5">
+                    <p class="cover-num">1 in 3</p>
+                    <p class="cover-text">dollars of goods we sold overseas in 2025 were sold to one country: China.</p>
+                    <p class="cover-source">Source: DFAT, Merchandise trade statistical pivot tables (calendar year 2025).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="page">
+
         <div class="pure-g chart-head flip">
             <div class="pure-u-1 pure-u-xl-2-5">
                 <h3>Most industries grew in the June quarter, but manufacturing fell the most</h3>
@@ -259,7 +365,7 @@
         </div>
         <div class="pure-g flip">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>Of the 19 industries shown, 14 grew and 5 shrank. Professional, scientific and technical services grew the most (+2.3%). Manufacturing fell the most (-1.9%), followed by administrative and support services (-1.4%).</p>
+                <p>Of the 19 industries shown, <strong class="hl">14 grew and 5 shrank</strong>. Professional, scientific and technical services grew the most (+2.3%). Manufacturing fell the most (-1.9%), followed by administrative and support services (-1.4%).</p>
                 <p>Gross value added (GVA) is the value an industry adds to the economy. This is one quarter only, so it shows a snapshot rather than a trend.</p>
                 <p class="source">Source: ABS, Australian National Accounts: National Income, Expenditure and Product, June 2026.</p>
             </div>
@@ -277,7 +383,7 @@
         </div>
         <div class="pure-g tight">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>In 2025, Australia sold A$176 billion of goods to China. That is 33.7% of all goods exports, or one dollar in every three, and almost three times as much as to Japan (A$62 billion). China's total is more than Japan, South Korea (A$42 billion) and the United States (A$41 billion) combined, and these four destinations took about 61% of everything we sold overseas.</p>
+                <p>In 2025, Australia sold <strong class="hl">A$176 billion</strong> of goods to China. That is 33.7% of all goods exports, or one dollar in every three, and almost three times as much as to Japan (A$62 billion). China's total is more than Japan, South Korea (A$42 billion) and the United States (A$41 billion) combined, and these four destinations took about 61% of everything we sold overseas.</p>
             </div>
             <div class="pure-u-1 pure-u-xl-3-5">
                 <div id="vis_flow_map"></div>
@@ -302,7 +408,7 @@
         </div>
         <div class="pure-g flip">
             <div class="pure-u-1 pure-u-xl-2-5">
-                <p>China bought about 12% of our goods exports in 2006. That rose to about 41% in 2020 and eased to about 34% in 2025.</p>
+                <p>China bought about <strong class="hl">12%</strong> of our goods exports in 2006. That rose to about 41% in 2020 and eased to about 34% in 2025.</p>
                 <p>Over the same period, total goods exports grew from A$164 billion to A$524 billion, and exports to China grew from about A$20 billion to A$176 billion.</p>
                 <p class="source">Source: DFAT, Merchandise trade statistical pivot tables (calendar years 2006-2025).</p>
             </div>
@@ -322,7 +428,10 @@
             </div>
         </div>
 
-        <footer>
+    </div>
+
+    <footer class="site-footer">
+    <div class="page">
             <h2 class="section-title">Data Sources</h2>
             <div class="pure-g">
                 <div class="pure-u-1 pure-u-xl-2-5">
@@ -346,14 +455,15 @@
                     <p>Made by Chenul Punchihewa in October 2026 for FIT3179 Data Visualisation 2 at Monash University. Every chart is built with Vega-Lite, and the specifications and data files are in the <a href="https://github.com/chenulpunchihewa/fit3179-dv2">GitHub repository</a>.</p>
                 </div>
                 <div class="pure-u-1 pure-u-xl-3-5">
-                    <p><strong>How AI was used.</strong> I used Claude, an AI assistant made by Anthropic, while building this page. It helped me write and debug the HTML, CSS and Vega-Lite code, test the layout and tidy the wording of the findings. I chose the topic and the data and made the final decisions about what the page says and shows.</p>
+                    <p><strong>How AI was used.</strong> I used Claude, an AI assistant made by Anthropic, while building this page. It helped me clean the data files, write and debug the code. I chose the topic and the data and made the final decisions about what the page says and shows.</p>
                 </div>
             </div>
-        </footer>
-
     </div>
+    </footer>
 
     <!-- JavaScript goes at the end of the body so the chart divs above already exist (Part A, section 1.2) -->
     <script src="js/vega_lite_vis.js"></script>
+    <!-- The chapter bar: shows itself, marks the current chapter and fills the dots as you scroll -->
+    <script src="js/page_scroll.js"></script>
 </body>
 </html>

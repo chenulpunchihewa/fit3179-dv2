@@ -13,7 +13,7 @@
       "transform": [
         {"filter": "datum.properties.name != 'Macquarie Island' && datum.properties.name != 'Lord Howe Island'"}
       ],
-      "mark": {"type": "geoshape", "fill": "#e6e6e6", "stroke": "white"}
+      "mark": {"type": "geoshape", "fill": "#e6e0d2", "stroke": "white"}
     },
     {
       "data": {

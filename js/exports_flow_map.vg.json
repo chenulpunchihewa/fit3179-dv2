@@ -17,7 +17,7 @@
       "encoding": {
         "fill": {
           "condition": {"test": "datum.properties.NAME == 'Australia'", "value": "#b0b8c2"},
-          "value": "#e6e6e6"
+          "value": "#e6e0d2"
         }
       }
     },

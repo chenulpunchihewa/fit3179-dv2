@@ -25,8 +25,24 @@ body {
     --muted: #586779; /* labels, bylines and source lines */
     --row-gap: 56px;  /* white space between one chart row and the next (used everywhere) */
     --group-gap: 32px; /* gap between two charts that share one headline and one caption */
-    --rule: #b3c9e0;  /* soft blue: the thin line beside a chart caption */
+    --rule: #e8c36a;  /* soft saffron: the thin line beside a chart caption */
     --font-display: 'Bricolage Grotesque', 'Open Sans', sans-serif;  /* titles and big numbers */
+
+    /* Warm palette (v16). The page is "paper"; the header and chapter covers are tinted bands. Saffron is the one new
+       accent next to the blue and red of the charts. Changing these variables restyles the whole page. */
+    --paper: #fbf7ef;           /* page background */
+    --saffron: #f2a900;         /* accent: underlines, dots, shadows */
+    --saffron-deep: #985a00;    /* a darker saffron that is readable as small text on the bands */
+    --mark: rgba(242, 169, 0, 0.38);   /* highlighter-pen colour behind key figures */
+    --hero-bg: #f3e9d4;         /* header band */
+    --band-bg: #f3e9d4;         /* chapter cover bands */
+    --band-ink: #0f2742;        /* text on the bands */
+    --band-accent: var(--saffron-deep);   /* "Chapter 1" label */
+    --band-num: var(--blue);    /* the big number */
+    --ghost: rgba(15, 39, 66, 0.07);      /* the faint chapter numeral */
+    --dot: rgba(152, 90, 0, 0.20);        /* dot pattern in the header */
+    --tile-shadow: var(--saffron);        /* shadow under tiles and pills */
+    --footer-bg: #f3e9d4;
 }
 
 /* ---------- Header ---------- */
@@ -53,8 +69,9 @@ h1 {
     display: inline-block;
     margin: 0;
     padding: 6px 14px;
+    border: 1.5px solid var(--ink);
     border-radius: 999px;
-    background-color: var(--tint);
+    background-color: #ffffff;
     color: var(--blue);
     font-size: 0.78rem;
     font-weight: 700;
@@ -84,9 +101,10 @@ h1 {
     align-items: center;
     gap: 8px;
     margin: 14px 0 0;
-    padding: 6px 16px;
+    padding: 5px 16px;
+    border: 1.5px solid var(--ink);
     border-radius: 999px;
-    background-color: var(--tint);
+    background-color: #ffffff;
     color: var(--ink);
     font-size: 0.88rem;
     font-weight: 700;
@@ -113,7 +131,7 @@ h1 {
     border: 2.5px solid var(--ink);
     border-radius: 22px;
     background-color: #ffffff;
-    box-shadow: 0 7px 0 var(--ink);
+    box-shadow: 0 7px 0 var(--tile-shadow);
 }
 
 .tile-tint {
@@ -162,7 +180,7 @@ h1 {
     border: 2px solid var(--ink);
     border-radius: 999px;
     background-color: #ffffff;
-    box-shadow: 0 3px 0 var(--ink);
+    box-shadow: 0 3px 0 var(--tile-shadow);
     color: var(--ink);
     font-size: 0.88rem;
     font-weight: 700;
@@ -174,7 +192,7 @@ h1 {
 .jump a:focus-visible {
     background-color: var(--tint);
     transform: translateY(2px);
-    box-shadow: 0 1px 0 var(--ink);
+    box-shadow: 0 1px 0 var(--tile-shadow);
 }
 
 /* Section titles: small, bold capitals so they read as signposts, not as chart headlines */
@@ -243,4 +261,168 @@ footer p {
 /* Links use the same blue as the charts instead of the browser's default */
 a {
     color: #2166ac;
+}
+
+
+/* ---------- v16: warm look, answer line, highlights, chapter covers, chapter bar, tooltip ---------- */
+
+/* The header band: a faint dot pattern (the dots echo the people icons in the first chart) on the band colour */
+.hero-band {
+    background: radial-gradient(circle, var(--dot) 1.6px, transparent 1.9px) 0 0 / 24px 24px, var(--hero-bg);
+}
+
+/* The one-sentence answer under the title: set apart by a saffron rule, a little larger than the intro */
+.answer {
+    max-width: 56ch;
+    margin: 0 0 18px;
+    padding-left: 16px;
+    border-left: 5px solid var(--saffron);
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--ink);
+}
+
+/* Key figures in the findings get a highlighter-pen underline */
+.hl {
+    padding: 0 2px;
+    background: linear-gradient(transparent 56%, var(--mark) 56%);
+    color: var(--ink);
+    font-weight: 700;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
+/* The first paragraph beside each chart (the finding) is a little larger than the rest */
+.pure-g:not(.chart-head):not(.wrap-up) > .pure-u-xl-2-5 > p:first-child {
+    font-size: 1.05rem;
+    color: var(--ink);
+}
+
+/* ----- Chapter covers ----- */
+.cover {
+    background: var(--band-bg);
+    color: var(--band-ink);
+}
+
+.cover .section-title {
+    color: var(--band-ink);
+}
+
+.cover .cover-kicker {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--band-accent);
+}
+
+.cover .cover-blurb {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--band-ink);
+}
+
+.cover .cover-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(4.5rem, 10vw, 8.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    color: var(--band-num);
+}
+
+.cover .cover-text {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--band-ink);
+}
+
+.cover .cover-source {
+    margin-top: 14px;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--band-ink);
+    opacity: 0.8;
+}
+
+.cover-ghost {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(11rem, 28vw, 24rem);
+    color: var(--ghost);
+}
+
+/* ----- Chapter bar ----- */
+.chapter-bar {
+    background: rgba(251, 247, 239, 0.93);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--ink);
+}
+
+.bar-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.bar-chapters a {
+    display: block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--ink);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.15s;
+}
+
+.bar-chapters a:hover,
+.bar-chapters a:focus-visible {
+    background-color: var(--mark);
+}
+
+.bar-chapters a.active {
+    background-color: var(--saffron);
+}
+
+.bar-meter span {
+    background-color: rgba(15, 39, 66, 0.16);
+}
+
+.bar-meter span.on {
+    background-color: var(--saffron);
+    box-shadow: 0 0 0 1px rgba(15, 39, 66, 0.35);
+}
+
+/* ----- Footer band ----- */
+.site-footer {
+    background: var(--footer-bg);
+}
+
+/* ----- Chart tooltips (the box that appears on hover): paper colour, ink outline, saffron shadow ----- */
+#vg-tooltip-element.vg-tooltip {
+    padding: 8px 12px;
+    border: 2px solid #0f2742;
+    border-radius: 10px;
+    background-color: #fffdf8;
+    box-shadow: 0 4px 0 #f2a900;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #0f2742;
+}
+
+#vg-tooltip-element.vg-tooltip td.key {
+    color: #586779;
+}
+
+#vg-tooltip-element.vg-tooltip td.value {
+    font-weight: 700;
 }

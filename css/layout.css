@@ -2,7 +2,7 @@
 
 html, body {
     margin: 0;
-    background-color: #ffffff;
+    background-color: var(--paper);   /* warm off-white "paper" (colour tokens are in style.css) */
 }
 
 /* A centred column that is never wider than the screen, so there is no sideways scrolling on a small laptop */
@@ -149,6 +149,18 @@ footer {
     padding-bottom: 48px;
 }
 
+/* The footer is a full-width band (its content sits on the same .page grid as everything else) */
+.site-footer {
+    margin-top: 24px;
+    padding-bottom: 56px;
+    border-top: 3px solid var(--ink);
+}
+
+.site-footer .page > .section-title:first-child {
+    margin-top: 44px;
+    border-top: 0;           /* the band's own top line is already above it */
+}
+
 /* The footer sits on the same two columns as the chart rows: a short note on the left (2/5), the content on the
    right (3/5), so its text starts on the same vertical line as the charts and captions above */
 footer .pure-g {
@@ -279,4 +291,167 @@ footer li {
 /* When a link jumps to a section, stop a little above it so the section title is not stuck to the top edge */
 .section-title {
     scroll-margin-top: 24px;
+}
+
+
+/* ---------- v16: full-width bands, chapter covers and the chapter bar ---------- */
+
+/* The header now sits in a full-width band. Its content is still the .page column, so nothing moves sideways. */
+.hero-band {
+    display: flow-root;       /* keeps the header's top margin inside the band instead of letting it spill above it */
+    margin-bottom: 72px;
+    padding-bottom: 36px;
+    border-bottom: 3px solid var(--ink);
+}
+
+/* Chapter covers: a full-width band with the chapter name on the left (2/5) and one big number on the right (3/5),
+   so the cover lines up with the chart rows under it. overflow: hidden stops the huge ghost numeral from adding a
+   horizontal scrollbar. */
+.cover {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 0 64px;
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+    scroll-margin-top: 52px;       /* leaves room for the chapter bar when a link jumps here */
+}
+
+.cover > .page {
+    position: relative;
+    z-index: 1;
+}
+
+.cover .pure-g {
+    margin-bottom: 0;
+    align-items: center;
+}
+
+/* Inside a cover the section title is the chapter name, so the thin top rule used elsewhere is removed */
+.cover .section-title {
+    margin: 4px 0 14px;
+    padding-top: 0;
+    border-top: 0;
+    font-size: clamp(2.1rem, 4.2vw, 3rem);
+    scroll-margin-top: 0;
+}
+
+.cover .cover-kicker,
+.cover .cover-blurb,
+.cover .cover-text,
+.cover .cover-source,
+.cover .cover-num {
+    margin: 0;
+}
+
+.cover .cover-blurb {
+    max-width: 30ch;
+}
+
+.cover .cover-text {
+    max-width: 34ch;
+}
+
+.cover .cover-source {
+    max-width: 62ch;
+}
+
+/* The giant faint chapter numeral behind the cover */
+.cover-ghost {
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* The rows after a cover start a little below it */
+.cover + .page {
+    padding-top: 64px;
+}
+
+/* When the columns stack the number sits under the chapter name */
+@media (max-width: 79.99em) {
+    .cover .pure-g > div + div {
+        margin-top: 24px;
+    }
+}
+
+/* ---------- Chapter bar (fixed to the top of the window; js/page_scroll.js slides it in) ---------- */
+.chapter-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    box-sizing: border-box;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    /* side padding lines the bar's content up with the page's text column, and never less than 16px */
+    padding: 0 max(16px, calc(50% - 538px));
+    transform: translateY(-110%);
+    visibility: hidden;      /* hidden bar cannot be tabbed into; it becomes visible together with the slide-in */
+    transition: transform 0.25s ease, visibility 0s 0.25s;
+}
+
+.chapter-bar.show {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.25s ease;
+}
+
+.bar-chapters {
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    gap: 4px;
+}
+
+@media (min-width: 64em) {
+    .bar-chapters {
+        display: flex;
+    }
+}
+
+.bar-meter {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+}
+
+.bar-meter span {
+    display: block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+@media (max-width: 36em) {
+    .hero-band {
+        margin-bottom: 40px;
+    }
+
+    .chapter-bar {
+        gap: 12px;
+    }
+
+    .bar-meter {
+        gap: 3px;
+    }
+
+    .bar-meter span {
+        width: 5px;
+        height: 5px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .chapter-bar {
+        transition: none;
+    }
 }

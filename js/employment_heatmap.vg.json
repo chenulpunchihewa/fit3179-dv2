@@ -4,7 +4,7 @@
   "width": 590,
   "height": 297,
   "padding": {"left": 0, "top": 5, "right": 5, "bottom": 5},
-  "view": {"fill": "#dcdfe3", "stroke": null},
+  "view": {"fill": "#e4decf", "stroke": null},
   "data": {
     "url": "https://raw.githubusercontent.com/chenulpunchihewa/fit3179-dv2/refs/heads/main/data/employment_ratio_monthly.csv"
   },
